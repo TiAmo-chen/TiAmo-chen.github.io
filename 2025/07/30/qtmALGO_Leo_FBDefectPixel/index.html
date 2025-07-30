@@ -1,0 +1,492 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>FB缺陷像素代码审查 | 橙心</title><meta name="author" content="橙心"><meta name="copyright" content="橙心"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="FB缺陷像素代码审查🧑‍💻 User代码0  🤖 Assistant | 深度求索代码审查报告总结审查了Leo_FBDefectPixel类的GetProperty方法实现，未发现关键性缺陷。代码整体符合C++11标准和VS2013环境要求，功能逻辑正确。存在少量可维护性方面的观察点。 文件审查结果[Leo_FBDefectPixel.cpp:1-207]  Finding Type: 合规">
+<meta property="og:type" content="article">
+<meta property="og:title" content="FB缺陷像素代码审查">
+<meta property="og:url" content="http://orangeheart.top/2025/07/30/qtmALGO_Leo_FBDefectPixel/index.html">
+<meta property="og:site_name" content="橙心">
+<meta property="og:description" content="FB缺陷像素代码审查🧑‍💻 User代码0  🤖 Assistant | 深度求索代码审查报告总结审查了Leo_FBDefectPixel类的GetProperty方法实现，未发现关键性缺陷。代码整体符合C++11标准和VS2013环境要求，功能逻辑正确。存在少量可维护性方面的观察点。 文件审查结果[Leo_FBDefectPixel.cpp:1-207]  Finding Type: 合规">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://orangeheart.top/image/486.jpg">
+<meta property="article:published_time" content="2025-07-30T08:00:25.417Z">
+<meta property="article:modified_time" content="2025-07-04T08:59:13.865Z">
+<meta property="article:author" content="橙心">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://orangeheart.top/image/486.jpg"><script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "FB缺陷像素代码审查",
+  "url": "http://orangeheart.top/2025/07/30/qtmALGO_Leo_FBDefectPixel/",
+  "image": "http://orangeheart.top/image/486.jpg",
+  "datePublished": "2025-07-30T08:00:25.417Z",
+  "dateModified": "2025-07-04T08:59:13.865Z",
+  "author": [
+    {
+      "@type": "Person",
+      "name": "橙心",
+      "url": "http://orangeheart.top"
+    }
+  ]
+}</script><link rel="shortcut icon" href="/image/%E5%B0%8F%E7%8B%97.png"><link rel="canonical" href="http://orangeheart.top/2025/07/30/qtmALGO_Leo_FBDefectPixel/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":false},
+  copy: {
+    success: '复制成功',
+    error: '复制失败',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'null',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyloadPlugin: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'FB缺陷像素代码审查',
+  isHighlightShrink: false,
+  isToc: true,
+  pageType: 'post'
+}</script><meta name="generator" content="Hexo 7.3.0"></head><body><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url(/image/ihli.png);"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><img class="site-icon" src="/image/486.jpg" alt="Logo"><span class="site-name">橙心</span></a><a class="nav-page-title" href="/"><span class="site-name">FB缺陷像素代码审查</span><span class="site-name"><i class="fa-solid fa-circle-arrow-left"></i><span>  返回首页</span></span></a></span><div id="menus"></div></nav><div id="post-info"><h1 class="post-title">FB缺陷像素代码审查</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2025-07-30T08:00:25.417Z" title="发表于 2025-07-30 16:00:25">2025-07-30</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2025-07-04T08:59:13.865Z" title="更新于 2025-07-04 16:59:13">2025-07-04</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">浏览量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><h1 id="FB缺陷像素代码审查"><a href="#FB缺陷像素代码审查" class="headerlink" title="FB缺陷像素代码审查"></a>FB缺陷像素代码审查</h1><h3 id="🧑‍💻-User"><a href="#🧑‍💻-User" class="headerlink" title="🧑‍💻 User"></a>🧑‍💻 User</h3><p>代码0</p>
+<hr>
+<h3 id="🤖-Assistant-深度求索"><a href="#🤖-Assistant-深度求索" class="headerlink" title="🤖 Assistant | 深度求索"></a>🤖 Assistant | 深度求索</h3><h1 id="代码审查报告"><a href="#代码审查报告" class="headerlink" title="代码审查报告"></a>代码审查报告</h1><h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>审查了Leo_FBDefectPixel类的GetProperty方法实现，未发现关键性缺陷。代码整体符合C++11标准和VS2013环境要求，功能逻辑正确。存在少量可维护性方面的观察点。</p>
+<h2 id="文件审查结果"><a href="#文件审查结果" class="headerlink" title="文件审查结果"></a>文件审查结果</h2><p>[Leo_FBDefectPixel.cpp:1-207]</p>
+<ul>
+<li><strong>Finding Type</strong>: 合规性</li>
+<li><strong>Issue</strong>: 宏定义AddTestColorLog使用了boost::format但未检查头文件包含</li>
+<li><strong>证据</strong>: <code>#define AddTestColorLog(p,b) &#123;m_pTestItem-&gt;PushReportMess((boost::format(&quot;%s: %s.&quot;) % __FUNCTION__ % (p)),b?0x00FF00:0xFF0000); qtView_Bridge::getInst(m_pTestItem-&gt;m_id)-&gt;LogMessage((boost::format(&quot;%s: %s.&quot;) % __FUNCTION__ % (p)));&#125;</code></li>
+<li><strong>VS2013&#x2F;C++11相关性</strong>: 在VS2013中，boost库需要正确包含头文件</li>
+<li><strong>严重程度</strong>: 中</li>
+<li><strong>置信度</strong>: 高</li>
+</ul>
+<p>[Leo_FBDefectPixel.cpp:31-35]</p>
+<ul>
+<li><strong>Finding Type</strong>: 安全性</li>
+<li><strong>Issue</strong>: 字符串常量数组未使用constexpr限定</li>
+<li><strong>证据</strong>: <code>const char* prefixes[] = &#123; &quot;R&quot;, &quot;B&quot;, &quot;Gr&quot;, &quot;Gb&quot;, &quot;G&quot; &#125;; const char* types[] = &#123; &quot;Singlet&quot;, &quot;Doublet&quot;, &quot;Triplet&quot;, &quot;TotalArea&quot; &#125;;</code></li>
+<li><strong>VS2013&#x2F;C++11相关性</strong>: C++11推荐对编译期常量使用constexpr</li>
+<li><strong>严重程度</strong>: 低</li>
+<li><strong>置信度</strong>: 中</li>
+</ul>
+<p>[Leo_FBDefectPixel.cpp:164-170]</p>
+<ul>
+<li><strong>Finding Type</strong>: 可维护性</li>
+<li><strong>Issue</strong>: 嵌套条件逻辑较深，可能影响可读性</li>
+<li><strong>证据</strong>:</li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (<span class="string">&quot;True&quot;</span> == temp1&amp;&amp;<span class="string">&quot;True&quot;</span> == temp2)</span><br><span class="line">&#123;</span><br><span class="line">    count = <span class="number">5</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li><strong>观察说明</strong>: 条件判断使用了字符串字面量直接比较，建议使用常量或枚举</li>
+<li><strong>严重程度</strong>: 低</li>
+<li><strong>置信度</strong>: 中</li>
+</ul>
+<p>[Leo_FBDefectPixel.cpp:180-203]</p>
+<ul>
+<li><strong>Finding Type</strong>: 正确性</li>
+<li><strong>Issue</strong>: 循环变量类型不一致（int vs size_t）</li>
+<li><strong>证据</strong>:</li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; <span class="number">4</span>; i++)  <span class="comment">// 使用int</span></span><br><span class="line">...</span><br><span class="line"><span class="keyword">for</span> (<span class="type">int</span> j = <span class="number">0</span>; j &lt; count; j++)  <span class="comment">// count是size_t类型</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li><strong>VS2013&#x2F;C++11相关性</strong>: 类型不匹配可能导致警告</li>
+<li><strong>严重程度</strong>: 低</li>
+<li><strong>置信度</strong>: 高</li>
+</ul>
+<h2 id="关键说明"><a href="#关键说明" class="headerlink" title="关键说明"></a>关键说明</h2><ol>
+<li>审查严格限于提供的代码片段，未检查相关头文件或继承关系</li>
+<li>假设所有引用的外部函数和宏定义已正确定义</li>
+<li>未验证XML生成逻辑的实际功能正确性，仅检查语法和结构安全性</li>
+</ol>
+<hr>
+<h3 id="🧑‍💻-User-1"><a href="#🧑‍💻-User-1" class="headerlink" title="🧑‍💻 User"></a>🧑‍💻 User</h3><hr>
+<h3 id="🧑‍💻-User-2"><a href="#🧑‍💻-User-2" class="headerlink" title="🧑‍💻 User"></a>🧑‍💻 User</h3><p>代码段1</p>
+<hr>
+<h3 id="🤖-Assistant-深度求索-1"><a href="#🤖-Assistant-深度求索-1" class="headerlink" title="🤖 Assistant | 深度求索"></a>🤖 Assistant | 深度求索</h3><h1 id="代码审查报告-1"><a href="#代码审查报告-1" class="headerlink" title="代码审查报告"></a>代码审查报告</h1><h2 id="摘要"><a href="#摘要" class="headerlink" title="摘要"></a>摘要</h2><p>审查了Leo_FBDefectPixel::GetUIParam()方法的实现，发现1个潜在内存泄漏问题和1个逻辑错误问题，均为中等严重程度。</p>
+<h2 id="详细审查结果"><a href="#详细审查结果" class="headerlink" title="详细审查结果"></a>详细审查结果</h2><h3 id="Leo-FBDefectPixel-cpp-1-247"><a href="#Leo-FBDefectPixel-cpp-1-247" class="headerlink" title="[Leo_FBDefectPixel.cpp:1-247]"></a>[Leo_FBDefectPixel.cpp:1-247]</h3><ul>
+<li><strong>Finding Type</strong>: Correctness</li>
+<li><strong>Issue</strong>: 潜在内存泄漏 - 在每次调用GetUIParam()时都会为m_DPInput.imgdata_c.data分配新内存，但没有释放之前分配的内存</li>
+<li><strong>Evidence</strong>:</li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">m_DPInput.imgdata_c.data = <span class="keyword">new</span> <span class="type">unsigned</span> <span class="type">short</span>[Unpack10image.width* Unpack10image.height];</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p><strong>VS2013&#x2F;C++11 Relevance</strong>: 原生指针管理在C++11中仍需手动释放</p>
+</li>
+<li><p><strong>Severity</strong>: Medium</p>
+</li>
+<li><p><strong>Confidence</strong>: High</p>
+</li>
+<li><p><strong>Finding Type</strong>: Correctness </p>
+</li>
+<li><p><strong>Issue</strong>: 逻辑错误 - 奇偶校验条件写反，导致错误提示信息不准确</p>
+</li>
+<li><p><strong>Evidence</strong>:</p>
+</li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (!((m_DPInput.ksize_pl_c.x &amp; <span class="number">1</span>) != <span class="number">0</span>) &amp;&amp; ((m_DPInput.ksize_pl_c.y &amp; <span class="number">1</span>) != <span class="number">0</span>))</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p><strong>VS2013&#x2F;C++11 Relevance</strong>: 基础逻辑运算符优先级问题</p>
+</li>
+<li><p><strong>Severity</strong>: Medium  </p>
+</li>
+<li><p><strong>Confidence</strong>: High</p>
+</li>
+<li><p><strong>Finding Type</strong>: Clarity</p>
+</li>
+<li><p><strong>Issue</strong>: 注释与代码不符 - 关于图像通道的注释描述不准确</p>
+</li>
+<li><p><strong>Evidence</strong>:</p>
+</li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 图像通道 单通道图:x=1,y=1 bayer图：x=2,y=2</span></span><br></pre></td></tr></table></figure>
+<p>与实际代码逻辑不完全匹配</p>
+<ul>
+<li><strong>Severity</strong>: Low</li>
+<li><strong>Confidence</strong>: Medium</li>
+</ul>
+<h2 id="关键注意事项"><a href="#关键注意事项" class="headerlink" title="关键注意事项"></a>关键注意事项</h2><ol>
+<li>审查基于提供的代码片段，假设m_DPInput.imgdata_c.data在其他地方有正确的释放机制</li>
+<li>条件判断错误可能导致无效参数被接受，影响后续处理</li>
+<li>所有发现的问题都严格限定在提供的代码范围内</li>
+</ol>
+<hr>
+<h3 id="🧑‍💻-User-3"><a href="#🧑‍💻-User-3" class="headerlink" title="🧑‍💻 User"></a>🧑‍💻 User</h3><p>代码段2</p>
+<hr>
+<h3 id="🤖-Assistant-深度求索-2"><a href="#🤖-Assistant-深度求索-2" class="headerlink" title="🤖 Assistant | 深度求索"></a>🤖 Assistant | 深度求索</h3><h1 id="代码审查报告-2"><a href="#代码审查报告-2" class="headerlink" title="代码审查报告"></a>代码审查报告</h1><h2 id="摘要-1"><a href="#摘要-1" class="headerlink" title="摘要"></a>摘要</h2><p>审查了Leo_FBDefectPixel类的LoadLibraryDLL()和FreeLibraryDLL()方法实现，发现2个潜在问题和1个不一致性问题。</p>
+<h2 id="详细审查结果-1"><a href="#详细审查结果-1" class="headerlink" title="详细审查结果"></a>详细审查结果</h2><h3 id="LoadLibraryDLL-函数"><a href="#LoadLibraryDLL-函数" class="headerlink" title="[LoadLibraryDLL()函数]"></a>[LoadLibraryDLL()函数]</h3><ul>
+<li><strong>Finding Type</strong>: Safety</li>
+<li><strong>Issue</strong>: 使用硬编码序数(1)获取函数地址存在风险</li>
+<li><strong>Evidence</strong>:</li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">m_FBDefectPixelTest = (imgProc_defect_process)<span class="built_in">GetProcAddress</span>(m_FBDefectPixelDll, (<span class="type">char</span>*)<span class="number">1</span>);</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p><strong>VS2013&#x2F;C++11 Relevance</strong>: 序数绑定可能导致DLL版本兼容性问题</p>
+</li>
+<li><p><strong>Severity</strong>: Medium</p>
+</li>
+<li><p><strong>Confidence</strong>: High</p>
+</li>
+<li><p><strong>Finding Type</strong>: Correctness</p>
+</li>
+<li><p><strong>Issue</strong>: 错误日志信息与实际加载的DLL名称不一致</p>
+</li>
+<li><p><strong>Evidence</strong>:</p>
+</li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">AddTestNGLog</span>(<span class="string">&quot;Can&#x27;t Find file:FBDefectPixel\\QTSDK-debug64.dll&quot;</span>);</span><br></pre></td></tr></table></figure>
+<p>与实际的dllpath变量值不一致</p>
+<ul>
+<li><strong>Severity</strong>: Low</li>
+<li><strong>Confidence</strong>: High</li>
+</ul>
+<h3 id="FreeLibraryDLL-函数"><a href="#FreeLibraryDLL-函数" class="headerlink" title="[FreeLibraryDLL()函数]"></a>[FreeLibraryDLL()函数]</h3><ul>
+<li><strong>Finding Type</strong>: Compliance</li>
+<li><strong>Issue</strong>: 内存释放顺序与分配顺序不一致</li>
+<li><strong>Evidence</strong>:</li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">SAFE_FREE_LIBRARY</span>(m_FBDefectPixelDll);</span><br><span class="line"><span class="built_in">SAFE_DELETE_ARRAY</span>(m_DPInput.imgdata_c.data);</span><br></pre></td></tr></table></figure>
+<p>与GetUIParam()中的分配顺序相反</p>
+<ul>
+<li><strong>Severity</strong>: Low  </li>
+<li><strong>Confidence</strong>: Medium</li>
+</ul>
+<h2 id="关键注意事项-1"><a href="#关键注意事项-1" class="headerlink" title="关键注意事项"></a>关键注意事项</h2><ol>
+<li>审查基于提供的代码片段，假设SAFE_FREE_LIBRARY和SAFE_DELETE_ARRAY宏已正确定义</li>
+<li>错误日志的不一致可能导致调试困难</li>
+<li>所有发现的问题都严格限定在提供的代码范围内</li>
+</ol>
+<hr>
+<h3 id="🧑‍💻-User-4"><a href="#🧑‍💻-User-4" class="headerlink" title="🧑‍💻 User"></a>🧑‍💻 User</h3><p>代码段3</p>
+<hr>
+<h3 id="🤖-Assistant-深度求索-3"><a href="#🤖-Assistant-深度求索-3" class="headerlink" title="🤖 Assistant | 深度求索"></a>🤖 Assistant | 深度求索</h3><h1 id="代码审查报告-3"><a href="#代码审查报告-3" class="headerlink" title="代码审查报告"></a>代码审查报告</h1><h2 id="摘要-2"><a href="#摘要-2" class="headerlink" title="摘要"></a>摘要</h2><p>对Leo_FBDefectPixel::Run()函数进行了审查，主要关注缺陷像素检测逻辑的正确性和安全性。发现1个潜在逻辑错误和1个代码清晰度问题。</p>
+<h2 id="详细审查结果-2"><a href="#详细审查结果-2" class="headerlink" title="详细审查结果"></a>详细审查结果</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">[Leo_FBDefectPixel.cpp:1-154]</span><br><span class="line">- **Finding Type**: Correctness</span><br><span class="line">- **Issue**: 在计算signle_count时可能存在逻辑错误。当doubleormore_sum大于res_node.isingle_count时，signle_count将变为负数，这显然不符合业务逻辑</span><br><span class="line">- **Evidence**: </span><br><span class="line">  signle_count = res_node.isingle_count - doubleormore_sum; (出现两次，分别在MONO和彩色处理分支)</span><br><span class="line">- **VS2013/C++11 Relevance**: 无特定相关性，属于通用逻辑问题</span><br><span class="line">- **Severity**: Medium</span><br><span class="line">- **Confidence**: High</span><br><span class="line"></span><br><span class="line">- **Finding Type**: Clarity</span><br><span class="line">- **Issue**: 字符串拼接方式不一致，有时使用operator+，有时使用boost::format，缺乏统一风格</span><br><span class="line">- **Evidence**: </span><br><span class="line">  多处字符串拼接，如：</span><br><span class="line">  itemname = prefix4output + &quot;Total_Area&quot;;</span><br><span class="line">  AddTestLog(boost::format(&quot;MinDefectDelta:&quot; + std::to_string(res_node.fcontrast_min)));</span><br><span class="line">- **VS2013/C++11 Relevance**: 无特定相关性</span><br><span class="line">- **Severity**: Low</span><br><span class="line">- **Confidence**: High</span><br></pre></td></tr></table></figure>
+
+<h2 id="关键说明-1"><a href="#关键说明-1" class="headerlink" title="关键说明"></a>关键说明</h2><ol>
+<li>审查仅针对提供的代码片段，未验证外部依赖(m_FBDefectPixelTest, AddTestColorLog等)的正确性</li>
+<li>假设m_specMap和m_specs4Sum已正确初始化且包含所需键值</li>
+<li>未验证m_DPInput和m_DPoutput结构的完整性</li>
+</ol>
+<hr>
+<h3 id="🧑‍💻-User-5"><a href="#🧑‍💻-User-5" class="headerlink" title="🧑‍💻 User"></a>🧑‍💻 User</h3><hr>
+<h3 id="🧑‍💻-User-6"><a href="#🧑‍💻-User-6" class="headerlink" title="🧑‍💻 User"></a>🧑‍💻 User</h3><p>代码段4</p>
+<hr>
+<h3 id="🤖-Assistant-深度求索-4"><a href="#🤖-Assistant-深度求索-4" class="headerlink" title="🤖 Assistant | 深度求索"></a>🤖 Assistant | 深度求索</h3><h1 id="代码审查报告：Leo-FBDefectPixel-OutPutPDF"><a href="#代码审查报告：Leo-FBDefectPixel-OutPutPDF" class="headerlink" title="代码审查报告：Leo_FBDefectPixel::OutPutPDF()"></a>代码审查报告：Leo_FBDefectPixel::OutPutPDF()</h1><h2 id="总结-1"><a href="#总结-1" class="headerlink" title="总结"></a>总结</h2><p>审查了输出PDF报告的功能实现，未发现严重缺陷。代码整体符合C++11规范，但在字符串处理和类型转换方面存在一些潜在风险点。审查范围仅限于提供的函数实现。</p>
+<h2 id="详细审查结果-3"><a href="#详细审查结果-3" class="headerlink" title="详细审查结果"></a>详细审查结果</h2><p>[Leo_FBDefectPixel.cpp:1-116]</p>
+<ul>
+<li><strong>Finding Type</strong>: Correctness</li>
+<li><strong>Issue</strong>: 布尔返回值设置冗余，初始设置为false后立即覆盖为true</li>
+<li><strong>Evidence</strong>: <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">bool</span> bRes = <span class="literal">false</span>;</span><br><span class="line">bRes = <span class="literal">true</span>;</span><br></pre></td></tr></table></figure></li>
+<li><strong>VS2013&#x2F;C++11 Relevance</strong>: 无特定环境相关性</li>
+<li><strong>Severity</strong>: Low</li>
+<li><strong>Confidence</strong>: High</li>
+</ul>
+<p>[Leo_FBDefectPixel.cpp:12-16]</p>
+<ul>
+<li><strong>Finding Type</strong>: Safety</li>
+<li><strong>Issue</strong>: 使用boost::assign::list_of进行字符串列表构造，存在潜在的构造失败风险</li>
+<li><strong>Evidence</strong>: <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">write_data.<span class="built_in">push_back</span>(std::<span class="built_in">make_pair</span>((std::list&lt;std::string&gt;)boost::assign::<span class="built_in">list_of</span>(<span class="string">&quot;Property&quot;</span>)(<span class="string">&quot;Value&quot;</span>), <span class="number">0</span>));</span><br></pre></td></tr></table></figure></li>
+<li><strong>VS2013&#x2F;C++11 Relevance</strong>: VS2013对boost库的支持可能存在边缘情况</li>
+<li><strong>Severity</strong>: Medium  </li>
+<li><strong>Confidence</strong>: Medium</li>
+</ul>
+<p>[Leo_FBDefectPixel.cpp:40-44]</p>
+<ul>
+<li><strong>Finding Type</strong>: Correctness</li>
+<li><strong>Issue</strong>: 条件判断使用字符串字面量比较(“True”)，而非布尔值，存在拼写错误风险</li>
+<li><strong>Evidence</strong>: <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (<span class="string">&quot;True&quot;</span> == m_strMaskEnable)</span><br></pre></td></tr></table></figure></li>
+<li><strong>VS2013&#x2F;C++11 Relevance</strong>: 无特定环境相关性</li>
+<li><strong>Severity</strong>: Medium</li>
+<li><strong>Confidence</strong>: High</li>
+</ul>
+<p>[Leo_FBDefectPixel.cpp:63-67]</p>
+<ul>
+<li><strong>Finding Type</strong>: Safety</li>
+<li><strong>Issue</strong>: 硬编码循环次数(4)，与后续条件逻辑(count&#x3D;5)存在潜在不一致风险</li>
+<li><strong>Evidence</strong>: <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; <span class="number">4</span>; i++)</span><br></pre></td></tr></table></figure></li>
+<li><strong>VS2013&#x2F;C++11 Relevance</strong>: 无特定环境相关性</li>
+<li><strong>Severity</strong>: Medium</li>
+<li><strong>Confidence</strong>: Medium</li>
+</ul>
+<p>[Leo_FBDefectPixel.cpp:94-98]</p>
+<ul>
+<li><strong>Finding Type</strong>: Compliance</li>
+<li><strong>Issue</strong>: 未验证write_data是否为空即调用WriteTable，违反接口注释要求</li>
+<li><strong>Evidence</strong>: <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">in_out_db-&gt;<span class="built_in">GetReport</span>().<span class="built_in">WriteTable</span>(write_data);<span class="comment">//write_data不能为空</span></span><br></pre></td></tr></table></figure></li>
+<li><strong>VS2013&#x2F;C++11 Relevance</strong>: 无特定环境相关性</li>
+<li><strong>Severity</strong>: Medium</li>
+<li><strong>Confidence</strong>: High</li>
+</ul>
+<p>[Leo_FBDefectPixel.cpp:105-109]</p>
+<ul>
+<li><strong>Finding Type</strong>: Clarity</li>
+<li><strong>Issue</strong>: 颜色值使用魔数(0x000000&#x2F;0xFF0000)，缺乏可读性</li>
+<li><strong>Evidence</strong>: <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">write_data.<span class="built_in">push_back</span>(std::<span class="built_in">make_pair</span>(..., item.m_bIsQualified ? <span class="number">0x000000</span> : <span class="number">0xFF0000</span>));</span><br></pre></td></tr></table></figure></li>
+<li><strong>VS2013&#x2F;C++11 Relevance</strong>: 无特定环境相关性</li>
+<li><strong>Severity</strong>: Low</li>
+<li><strong>Confidence</strong>: High</li>
+</ul>
+<h2 id="关键注意事项-2"><a href="#关键注意事项-2" class="headerlink" title="关键注意事项"></a>关键注意事项</h2><ol>
+<li>审查基于提供的代码片段，假设所有外部依赖(m_pTestItem, in_out_db等)行为正确</li>
+<li>未验证boost库函数在VS2013环境下的异常处理行为</li>
+<li>字符串编码处理符合中文环境要求，未发现国际化问题</li>
+</ol>
+<hr>
+<h3 id="🧑‍💻-User-7"><a href="#🧑‍💻-User-7" class="headerlink" title="🧑‍💻 User"></a>🧑‍💻 User</h3><hr>
+<h3 id="🧑‍💻-User-8"><a href="#🧑‍💻-User-8" class="headerlink" title="🧑‍💻 User"></a>🧑‍💻 User</h3><p>代码5</p>
+<hr>
+<h3 id="🤖-Assistant-深度求索-5"><a href="#🤖-Assistant-深度求索-5" class="headerlink" title="🤖 Assistant | 深度求索"></a>🤖 Assistant | 深度求索</h3><h1 id="代码审查报告-4"><a href="#代码审查报告-4" class="headerlink" title="代码审查报告"></a>代码审查报告</h1><h2 id="摘要-3"><a href="#摘要-3" class="headerlink" title="摘要"></a>摘要</h2><p>审查了Leo_FBDefectPixel类的两个成员函数：OutPutSQLAndMES()和GetCurrentPath()。未发现关键性问题，但有几个需要注意的合规性和安全性问题。</p>
+<h2 id="文件审查发现"><a href="#文件审查发现" class="headerlink" title="文件审查发现"></a>文件审查发现</h2><h3 id="Leo-FBDefectPixel-cpp-1-26-OutPutSQLAndMES函数"><a href="#Leo-FBDefectPixel-cpp-1-26-OutPutSQLAndMES函数" class="headerlink" title="[Leo_FBDefectPixel.cpp:1-26 (OutPutSQLAndMES函数)]"></a>[Leo_FBDefectPixel.cpp:1-26 (OutPutSQLAndMES函数)]</h3><ul>
+<li><strong>发现类型</strong>: 合规性</li>
+<li><strong>问题</strong>: 宏函数SQL_ADDMES的使用缺少关键参数检查</li>
+<li><strong>证据</strong>: <code>SQL_ADDMES(&quot;&quot;, item.m_bIsQualified ? &quot;PASS&quot; : &quot;FAIL&quot;, item.m_iSpecification, item.m_iTestResult, SHRT_MIN, item.m_strTestName, &quot;&quot;, ENUM_THRESHOLD_TYPE::UNKNOWN_THRESH);</code></li>
+<li><strong>VS2013&#x2F;C++11相关性</strong>: 宏函数参数传递存在潜在类型不匹配风险</li>
+<li><strong>严重程度</strong>: 中</li>
+<li><strong>置信度</strong>: 高</li>
+<li><strong>观察说明</strong>: 虽然当前代码能运行，但宏函数参数过多且缺少类型安全保护</li>
+</ul>
+<h3 id="Leo-FBDefectPixel-cpp-1-26-OutPutSQLAndMES函数-1"><a href="#Leo-FBDefectPixel-cpp-1-26-OutPutSQLAndMES函数-1" class="headerlink" title="[Leo_FBDefectPixel.cpp:1-26 (OutPutSQLAndMES函数)]"></a>[Leo_FBDefectPixel.cpp:1-26 (OutPutSQLAndMES函数)]</h3><ul>
+<li><strong>发现类型</strong>: 安全性</li>
+<li><strong>问题</strong>: 未验证m_pTestItem指针有效性</li>
+<li><strong>证据</strong>: <code>m_strModuleName = m_pTestItem-&gt;GetName();</code> 和 <code>m_strSn = m_pTestItem-&gt;in_out_hw-&gt;GetMoreProp(SN);</code></li>
+<li><strong>VS2013&#x2F;C++11相关性</strong>: 空指针解引用会导致程序崩溃</li>
+<li><strong>严重程度</strong>: 高</li>
+<li><strong>置信度</strong>: 中</li>
+<li><strong>观察说明</strong>: 在现有代码中直接使用指针而未检查是否为空</li>
+</ul>
+<h3 id="Leo-FBDefectPixel-cpp-28-38-GetCurrentPath函数"><a href="#Leo-FBDefectPixel-cpp-28-38-GetCurrentPath函数" class="headerlink" title="[Leo_FBDefectPixel.cpp:28-38 (GetCurrentPath函数)]"></a>[Leo_FBDefectPixel.cpp:28-38 (GetCurrentPath函数)]</h3><ul>
+<li><strong>发现类型</strong>: 安全性</li>
+<li><strong>问题</strong>: 未处理GetModuleFileNameW的失败情况</li>
+<li><strong>证据</strong>: <code>GetModuleFileNameW(NULL, ModulePath, MAX_PATH);</code></li>
+<li><strong>VS2013&#x2F;C++11相关性</strong>: Windows API调用失败时未处理错误情况</li>
+<li><strong>严重程度</strong>: 中</li>
+<li><strong>置信度</strong>: 高</li>
+<li><strong>观察说明</strong>: 函数返回false但未设置错误日志或错误信息</li>
+</ul>
+<h3 id="Leo-FBDefectPixel-cpp-28-38-GetCurrentPath函数-1"><a href="#Leo-FBDefectPixel-cpp-28-38-GetCurrentPath函数-1" class="headerlink" title="[Leo_FBDefectPixel.cpp:28-38 (GetCurrentPath函数)]"></a>[Leo_FBDefectPixel.cpp:28-38 (GetCurrentPath函数)]</h3><ul>
+<li><strong>发现类型</strong>: 合规性</li>
+<li><strong>问题</strong>: 函数参数myStr未清空或验证</li>
+<li><strong>证据</strong>: <code>myStr.Format(ModulePath);</code></li>
+<li><strong>VS2013&#x2F;C++11相关性</strong>: 如果myStr已包含数据，可能会造成内存问题</li>
+<li><strong>严重程度</strong>: 低</li>
+<li><strong>置信度</strong>: 中</li>
+</ul>
+<h2 id="关键说明-2"><a href="#关键说明-2" class="headerlink" title="关键说明"></a>关键说明</h2><ol>
+<li>审查基于提供的代码片段，假设SQL_ADD_BEGIIN和SQL_ADD_END宏已正确定义</li>
+<li>假设m_pTestItem在调用OutPutSQLAndMES()前已正确初始化</li>
+<li>未验证SQL_ADDMES宏的具体实现，仅审查其使用方式</li>
+</ol>
+<hr>
+<h3 id="🧑‍💻-User-9"><a href="#🧑‍💻-User-9" class="headerlink" title="🧑‍💻 User"></a>🧑‍💻 User</h3><p>下面是第二次AI评审</p>
+<hr>
+<h3 id="🧑‍💻-User-10"><a href="#🧑‍💻-User-10" class="headerlink" title="🧑‍💻 User"></a>🧑‍💻 User</h3><p>全部代码</p>
+<hr>
+<h3 id="🤖-Assistant-深度求索-6"><a href="#🤖-Assistant-深度求索-6" class="headerlink" title="🤖 Assistant | 深度求索"></a>🤖 Assistant | 深度求索</h3><h3 id="代码审查报告-5"><a href="#代码审查报告-5" class="headerlink" title="代码审查报告"></a>代码审查报告</h3><h4 id="文件：-Leo-FBDefectPixel-cpp"><a href="#文件：-Leo-FBDefectPixel-cpp" class="headerlink" title="文件： Leo_FBDefectPixel.cpp"></a><strong>文件：</strong> Leo_FBDefectPixel.cpp</h4><p><strong>行号：</strong> 185-188  </p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">m_DPInput.imgdata_c.data = <span class="keyword">new</span> <span class="type">unsigned</span> <span class="type">short</span>[Unpack10image.width * Unpack10image.height];</span><br><span class="line"><span class="built_in">memcpy</span>(m_DPInput.imgdata_c.data, (<span class="type">unsigned</span> <span class="type">short</span>*)Unpack10image.data, <span class="built_in">sizeof</span>(<span class="type">unsigned</span> <span class="type">short</span>) * Unpack10image.height * Unpack10image.width);</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><strong>问题类型：</strong> 内存管理 (正确性)  </li>
+<li><strong>问题描述：</strong> 动态分配的内存未在析构函数中释放，仅在<code>FreeLibraryDLL()</code>中释放。若<code>FreeLibraryDLL()</code>未被调用（如异常提前退出），会导致内存泄漏。  </li>
+<li><strong>证据：</strong>  <ul>
+<li>内存分配：<code>new unsigned short[...]</code> (行185)  </li>
+<li>释放位置：仅在<code>FreeLibraryDLL()</code>中调用<code>SAFE_DELETE_ARRAY()</code> (行380)</li>
+</ul>
+</li>
+<li><strong>VS2013&#x2F;C++11影响：</strong> 内存泄漏风险在C++11中仍存在，建议使用<code>std::unique_ptr</code>管理所有权。  </li>
+<li><strong>严重性：</strong> 高 (长期运行会导致内存耗尽)  </li>
+<li><strong>置信度：</strong> 高</li>
+</ul>
+<hr>
+<h4 id="文件：-Leo-FBDefectPixel-cpp-1"><a href="#文件：-Leo-FBDefectPixel-cpp-1" class="headerlink" title="文件： Leo_FBDefectPixel.cpp"></a><strong>文件：</strong> Leo_FBDefectPixel.cpp</h4><p><strong>行号：</strong> 449-452  </p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">m_testData.<span class="built_in">emplace_back</span>(itemname, sumResult.total_count, <span class="built_in">stoi</span>(m_specs4Sum[<span class="number">0</span>]));</span><br><span class="line">...</span><br><span class="line">m_testData.<span class="built_in">emplace_back</span>(itemname, sumResult.triple_or_more_count, <span class="built_in">stoi</span>(m_specs4Sum[<span class="number">3</span>]));</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><strong>问题类型：</strong> 潜在异常 (安全性)  </li>
+<li><strong>问题描述：</strong> <code>stoi()</code>未处理非法输入。若<code>m_specs4Sum</code>含非数字字符串（如UI配置错误），会抛出<code>std::invalid_argument</code>导致程序崩溃。  </li>
+<li><strong>证据：</strong>  <ul>
+<li><code>m_specs4Sum</code>来源：<code>HelperGetProp()</code>从UI读取字符串 (行150-153)</li>
+</ul>
+</li>
+<li><strong>VS2013&#x2F;C++11影响：</strong> <code>std::stoi</code>在转换失败时抛出异常是C++11标准行为。  </li>
+<li><strong>严重性：</strong> 中 (可控输入下风险低，但崩溃影响严重)  </li>
+<li><strong>置信度：</strong> 中</li>
+</ul>
+<hr>
+<h4 id="文件：-Leo-FBDefectPixel-cpp-2"><a href="#文件：-Leo-FBDefectPixel-cpp-2" class="headerlink" title="文件： Leo_FBDefectPixel.cpp"></a><strong>文件：</strong> Leo_FBDefectPixel.cpp</h4><p><strong>行号：</strong> 467-471  </p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="keyword">auto</span>&amp; item : m_testData) &#123;</span><br><span class="line">    item.m_bIsQualified = item.m_iTestResult &lt; item.m_iSpecification;</span><br><span class="line">    bRes &amp;= item.m_bIsQualified; <span class="comment">// 逻辑与操作</span></span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><strong>问题类型：</strong> 错误处理缺陷 (正确性)  </li>
+<li><strong>问题描述：</strong> 混合算法执行结果(<code>m_FBDefectPixelTest</code>)与测试项结果。若算法执行失败(<code>bRes=false</code>)，仍会处理无效的<code>m_testData</code>，导致未定义行为。  </li>
+<li><strong>证据：</strong>  <ul>
+<li><code>bRes</code>初始值来自<code>m_FBDefectPixelTest</code> (行394)  </li>
+<li>后续被测试项结果覆盖 (行470)</li>
+</ul>
+</li>
+<li><strong>严重性：</strong> 中 (垃圾数据可能导致错误结论)  </li>
+<li><strong>置信度：</strong> 中</li>
+</ul>
+<hr>
+<h3 id="关键说明-3"><a href="#关键说明-3" class="headerlink" title="关键说明"></a><strong>关键说明</strong></h3><ol>
+<li><strong>内存生命周期风险：</strong> <code>m_DPInput.imgdata_c.data</code> 在多个函数间传递，但所有权不清晰，违反RAII原则。</li>
+<li><strong>异常安全缺失：</strong> 无异常处理机制（如<code>try/catch</code>），特别是<code>new</code>和<code>stoi</code>可能抛出异常。</li>
+<li><strong>硬编码依赖：</strong> <code>LoadLibraryDLL()</code>使用序号导入函数(<code>(char*)1</code>)，DLL变更时易断裂。</li>
+</ol>
+<hr>
+<h3 id="总结-2"><a href="#总结-2" class="headerlink" title="总结"></a><strong>总结</strong></h3><p>发现<strong>4个关键问题</strong>：  </p>
+<ol>
+<li>内存泄漏风险 (高)  </li>
+<li>未验证的数值转换 (中)  </li>
+<li>错误处理混合 (中)</li>
+</ol>
+<p><strong>代码稳定性风险较高</strong>，建议优先解决内存和逻辑错误问题。</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="http://orangeheart.top">橙心</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="http://orangeheart.top/2025/07/30/qtmALGO_Leo_FBDefectPixel/">http://orangeheart.top/2025/07/30/qtmALGO_Leo_FBDefectPixel/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来源 <a href="http://orangeheart.top" target="_blank">橙心</a>！</span></div></div><div class="tag_share"><div class="post-share"><div class="social-share" data-image="/image/486.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><a class="pagination-related full-width" href="/2025/07/30/VCM%20%E6%B5%8B%E8%AF%95/" title=""><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-right"><div class="info-1"><div class="info-item-1">下一篇</div><div class="info-item-2"></div></div><div class="info-2"><div class="info-item-1">VCM Stroke 行程致动器需要在闭环模式下在机械停止之间进行测试，包括一次上升行程和一次下降行程。每个行程都需要50步。      参数 最小值 最大值 单位 备注    线性度 - 3 微米    线性行程 103 - 微米    程序 将执行器移动到底部机械止挡。   执行上行程：a. 在50个相等步骤内将DAC从底部扫到顶部止挡b. 在每一步，等待执行器稳定并记录：   i. 输入DAC代码   ii. 霍尔传感器读数   将执行器移动到顶部机械止挡。   执行下行程：a. 在50个相等步骤内将DAC从底部扫到顶部止挡b. 在每一步，等待执行器稳定并记录：   i. 输入DAC代码   ii. 霍尔传感器读数   分别保存两个扫描数据集。   对于每个行程（上和下），执行以下操作：a. 对输入DAC代码与霍尔传感器读数应用线性回归b. 计算测量的霍尔传感器读数与可用行程的DAC代码之间的最大偏差，这将给出线性度c. 标识出偏差小于等于最大线性度规范（3微米）的最长连续范围d. 计算线性行程 &#x3D; max(霍尔传感器读数) - min(霍尔传感器读数)在该范围内...</div></div></div></a></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="/image/486.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">橙心</div><div class="author-info-description"></div><div class="site-data"><a href="/archives/"><div class="headline">文章</div><div class="length-num">3</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">0</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#FB%E7%BC%BA%E9%99%B7%E5%83%8F%E7%B4%A0%E4%BB%A3%E7%A0%81%E5%AE%A1%E6%9F%A5"><span class="toc-number">1.</span> <span class="toc-text">FB缺陷像素代码审查</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%F0%9F%A7%91%E2%80%8D%F0%9F%92%BB-User"><span class="toc-number">1.0.1.</span> <span class="toc-text">🧑‍💻 User</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%F0%9F%A4%96-Assistant-%E6%B7%B1%E5%BA%A6%E6%B1%82%E7%B4%A2"><span class="toc-number">1.0.2.</span> <span class="toc-text">🤖 Assistant | 深度求索</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81%E5%AE%A1%E6%9F%A5%E6%8A%A5%E5%91%8A"><span class="toc-number">2.</span> <span class="toc-text">代码审查报告</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-number">2.1.</span> <span class="toc-text">总结</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%96%87%E4%BB%B6%E5%AE%A1%E6%9F%A5%E7%BB%93%E6%9E%9C"><span class="toc-number">2.2.</span> <span class="toc-text">文件审查结果</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%B3%E9%94%AE%E8%AF%B4%E6%98%8E"><span class="toc-number">2.3.</span> <span class="toc-text">关键说明</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%F0%9F%A7%91%E2%80%8D%F0%9F%92%BB-User-1"><span class="toc-number">2.3.1.</span> <span class="toc-text">🧑‍💻 User</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%F0%9F%A7%91%E2%80%8D%F0%9F%92%BB-User-2"><span class="toc-number">2.3.2.</span> <span class="toc-text">🧑‍💻 User</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%F0%9F%A4%96-Assistant-%E6%B7%B1%E5%BA%A6%E6%B1%82%E7%B4%A2-1"><span class="toc-number">2.3.3.</span> <span class="toc-text">🤖 Assistant | 深度求索</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81%E5%AE%A1%E6%9F%A5%E6%8A%A5%E5%91%8A-1"><span class="toc-number">3.</span> <span class="toc-text">代码审查报告</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%91%98%E8%A6%81"><span class="toc-number">3.1.</span> <span class="toc-text">摘要</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AF%A6%E7%BB%86%E5%AE%A1%E6%9F%A5%E7%BB%93%E6%9E%9C"><span class="toc-number">3.2.</span> <span class="toc-text">详细审查结果</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Leo-FBDefectPixel-cpp-1-247"><span class="toc-number">3.2.1.</span> <span class="toc-text">[Leo_FBDefectPixel.cpp:1-247]</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%B3%E9%94%AE%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9"><span class="toc-number">3.3.</span> <span class="toc-text">关键注意事项</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%F0%9F%A7%91%E2%80%8D%F0%9F%92%BB-User-3"><span class="toc-number">3.3.1.</span> <span class="toc-text">🧑‍💻 User</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%F0%9F%A4%96-Assistant-%E6%B7%B1%E5%BA%A6%E6%B1%82%E7%B4%A2-2"><span class="toc-number">3.3.2.</span> <span class="toc-text">🤖 Assistant | 深度求索</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81%E5%AE%A1%E6%9F%A5%E6%8A%A5%E5%91%8A-2"><span class="toc-number">4.</span> <span class="toc-text">代码审查报告</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%91%98%E8%A6%81-1"><span class="toc-number">4.1.</span> <span class="toc-text">摘要</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AF%A6%E7%BB%86%E5%AE%A1%E6%9F%A5%E7%BB%93%E6%9E%9C-1"><span class="toc-number">4.2.</span> <span class="toc-text">详细审查结果</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#LoadLibraryDLL-%E5%87%BD%E6%95%B0"><span class="toc-number">4.2.1.</span> <span class="toc-text">[LoadLibraryDLL()函数]</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#FreeLibraryDLL-%E5%87%BD%E6%95%B0"><span class="toc-number">4.2.2.</span> <span class="toc-text">[FreeLibraryDLL()函数]</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%B3%E9%94%AE%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9-1"><span class="toc-number">4.3.</span> <span class="toc-text">关键注意事项</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%F0%9F%A7%91%E2%80%8D%F0%9F%92%BB-User-4"><span class="toc-number">4.3.1.</span> <span class="toc-text">🧑‍💻 User</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%F0%9F%A4%96-Assistant-%E6%B7%B1%E5%BA%A6%E6%B1%82%E7%B4%A2-3"><span class="toc-number">4.3.2.</span> <span class="toc-text">🤖 Assistant | 深度求索</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81%E5%AE%A1%E6%9F%A5%E6%8A%A5%E5%91%8A-3"><span class="toc-number">5.</span> <span class="toc-text">代码审查报告</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%91%98%E8%A6%81-2"><span class="toc-number">5.1.</span> <span class="toc-text">摘要</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AF%A6%E7%BB%86%E5%AE%A1%E6%9F%A5%E7%BB%93%E6%9E%9C-2"><span class="toc-number">5.2.</span> <span class="toc-text">详细审查结果</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%B3%E9%94%AE%E8%AF%B4%E6%98%8E-1"><span class="toc-number">5.3.</span> <span class="toc-text">关键说明</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%F0%9F%A7%91%E2%80%8D%F0%9F%92%BB-User-5"><span class="toc-number">5.3.1.</span> <span class="toc-text">🧑‍💻 User</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%F0%9F%A7%91%E2%80%8D%F0%9F%92%BB-User-6"><span class="toc-number">5.3.2.</span> <span class="toc-text">🧑‍💻 User</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%F0%9F%A4%96-Assistant-%E6%B7%B1%E5%BA%A6%E6%B1%82%E7%B4%A2-4"><span class="toc-number">5.3.3.</span> <span class="toc-text">🤖 Assistant | 深度求索</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81%E5%AE%A1%E6%9F%A5%E6%8A%A5%E5%91%8A%EF%BC%9ALeo-FBDefectPixel-OutPutPDF"><span class="toc-number">6.</span> <span class="toc-text">代码审查报告：Leo_FBDefectPixel::OutPutPDF()</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%80%BB%E7%BB%93-1"><span class="toc-number">6.1.</span> <span class="toc-text">总结</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AF%A6%E7%BB%86%E5%AE%A1%E6%9F%A5%E7%BB%93%E6%9E%9C-3"><span class="toc-number">6.2.</span> <span class="toc-text">详细审查结果</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%B3%E9%94%AE%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9-2"><span class="toc-number">6.3.</span> <span class="toc-text">关键注意事项</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%F0%9F%A7%91%E2%80%8D%F0%9F%92%BB-User-7"><span class="toc-number">6.3.1.</span> <span class="toc-text">🧑‍💻 User</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%F0%9F%A7%91%E2%80%8D%F0%9F%92%BB-User-8"><span class="toc-number">6.3.2.</span> <span class="toc-text">🧑‍💻 User</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%F0%9F%A4%96-Assistant-%E6%B7%B1%E5%BA%A6%E6%B1%82%E7%B4%A2-5"><span class="toc-number">6.3.3.</span> <span class="toc-text">🤖 Assistant | 深度求索</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81%E5%AE%A1%E6%9F%A5%E6%8A%A5%E5%91%8A-4"><span class="toc-number">7.</span> <span class="toc-text">代码审查报告</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%91%98%E8%A6%81-3"><span class="toc-number">7.1.</span> <span class="toc-text">摘要</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%96%87%E4%BB%B6%E5%AE%A1%E6%9F%A5%E5%8F%91%E7%8E%B0"><span class="toc-number">7.2.</span> <span class="toc-text">文件审查发现</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Leo-FBDefectPixel-cpp-1-26-OutPutSQLAndMES%E5%87%BD%E6%95%B0"><span class="toc-number">7.2.1.</span> <span class="toc-text">[Leo_FBDefectPixel.cpp:1-26 (OutPutSQLAndMES函数)]</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Leo-FBDefectPixel-cpp-1-26-OutPutSQLAndMES%E5%87%BD%E6%95%B0-1"><span class="toc-number">7.2.2.</span> <span class="toc-text">[Leo_FBDefectPixel.cpp:1-26 (OutPutSQLAndMES函数)]</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Leo-FBDefectPixel-cpp-28-38-GetCurrentPath%E5%87%BD%E6%95%B0"><span class="toc-number">7.2.3.</span> <span class="toc-text">[Leo_FBDefectPixel.cpp:28-38 (GetCurrentPath函数)]</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Leo-FBDefectPixel-cpp-28-38-GetCurrentPath%E5%87%BD%E6%95%B0-1"><span class="toc-number">7.2.4.</span> <span class="toc-text">[Leo_FBDefectPixel.cpp:28-38 (GetCurrentPath函数)]</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%B3%E9%94%AE%E8%AF%B4%E6%98%8E-2"><span class="toc-number">7.3.</span> <span class="toc-text">关键说明</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%F0%9F%A7%91%E2%80%8D%F0%9F%92%BB-User-9"><span class="toc-number">7.3.1.</span> <span class="toc-text">🧑‍💻 User</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%F0%9F%A7%91%E2%80%8D%F0%9F%92%BB-User-10"><span class="toc-number">7.3.2.</span> <span class="toc-text">🧑‍💻 User</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%F0%9F%A4%96-Assistant-%E6%B7%B1%E5%BA%A6%E6%B1%82%E7%B4%A2-6"><span class="toc-number">7.3.3.</span> <span class="toc-text">🤖 Assistant | 深度求索</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81%E5%AE%A1%E6%9F%A5%E6%8A%A5%E5%91%8A-5"><span class="toc-number">7.3.4.</span> <span class="toc-text">代码审查报告</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%96%87%E4%BB%B6%EF%BC%9A-Leo-FBDefectPixel-cpp"><span class="toc-number">7.3.4.1.</span> <span class="toc-text">文件： Leo_FBDefectPixel.cpp</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%96%87%E4%BB%B6%EF%BC%9A-Leo-FBDefectPixel-cpp-1"><span class="toc-number">7.3.4.2.</span> <span class="toc-text">文件： Leo_FBDefectPixel.cpp</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%96%87%E4%BB%B6%EF%BC%9A-Leo-FBDefectPixel-cpp-2"><span class="toc-number">7.3.4.3.</span> <span class="toc-text">文件： Leo_FBDefectPixel.cpp</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%B3%E9%94%AE%E8%AF%B4%E6%98%8E-3"><span class="toc-number">7.3.5.</span> <span class="toc-text">关键说明</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%80%BB%E7%BB%93-2"><span class="toc-number">7.3.6.</span> <span class="toc-text">总结</span></a></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/07/30/qtmALGO_Leo_FBDefectPixel/" title="FB缺陷像素代码审查">FB缺陷像素代码审查</a><time datetime="2025-07-30T08:00:25.417Z" title="发表于 2025-07-30 16:00:25">2025-07-30</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/07/30/VCM%20%E6%B5%8B%E8%AF%95/" title="无标题">无标题</a><time datetime="2025-07-30T07:59:16.253Z" title="发表于 2025-07-30 15:59:16">2025-07-30</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/07/29/hello-world/" title="Hello World">Hello World</a><time datetime="2025-07-29T08:42:24.362Z" title="发表于 2025-07-29 16:42:24">2025-07-29</time></div></div></div></div></div></div></main><footer id="footer"><div class="footer-other"><div class="footer-copyright"><span class="copyright">&copy;&nbsp;2025 By 橙心</span><span class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo 7.3.0</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly 5.4.3</a></span></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><div class="js-pjax"></div><script id="canvas_nest" defer="defer" color="0,0,255" opacity="0.7" zIndex="-1" count="99" mobile="false" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/canvas-nest.min.js"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
