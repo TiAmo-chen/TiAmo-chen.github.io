@@ -1,0 +1,318 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>LangChain 学习 | 橙心</title><meta name="author" content="橙心"><meta name="copyright" content="橙心"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="📚 课程推荐免费课程（优先推荐）   课程 平台 时长 说明    LangChain for LLM Application Development DeepLearning.AI 2 小时 吴恩达出品，入门首选   RAG Fundamentals DeepLearning.AI 1 小时 RAG 基础概念   Building Systems with LLMs DeepLearning.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="LangChain 学习">
+<meta property="og:url" content="https://orangeheart.top/posts/ai-luo-di-gang-xue-xi-lu-xian.html">
+<meta property="og:site_name" content="橙心">
+<meta property="og:description" content="📚 课程推荐免费课程（优先推荐）   课程 平台 时长 说明    LangChain for LLM Application Development DeepLearning.AI 2 小时 吴恩达出品，入门首选   RAG Fundamentals DeepLearning.AI 1 小时 RAG 基础概念   Building Systems with LLMs DeepLearning.">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://orangeheart.top/image/486.jpg">
+<meta property="article:published_time" content="2026-04-20T15:55:55.000Z">
+<meta property="article:modified_time" content="2026-04-21T03:21:21.223Z">
+<meta property="article:author" content="橙心">
+<meta property="article:tag" content="LangChain">
+<meta property="article:tag" content="RAG">
+<meta property="article:tag" content="LLM">
+<meta property="article:tag" content="Python">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://orangeheart.top/image/486.jpg"><script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "LangChain 学习",
+  "url": "https://orangeheart.top/posts/ai-luo-di-gang-xue-xi-lu-xian.html",
+  "image": "https://orangeheart.top/image/486.jpg",
+  "datePublished": "2026-04-20T15:55:55.000Z",
+  "dateModified": "2026-04-21T03:21:21.223Z",
+  "author": [
+    {
+      "@type": "Person",
+      "name": "橙心",
+      "url": "https://orangeheart.top"
+    }
+  ]
+}</script><link rel="shortcut icon" href="/image/%E5%B0%8F%E7%8B%97.png"><link rel="canonical" href="https://orangeheart.top/posts/ai-luo-di-gang-xue-xi-lu-xian.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":false},
+  copy: {
+    success: '复制成功',
+    error: '复制失败',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'null',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyloadPlugin: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'LangChain 学习',
+  isHighlightShrink: false,
+  isToc: true,
+  pageType: 'post'
+}</script><meta name="generator" content="Hexo 7.3.0"></head><body><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url(/image/ihli.webp);"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><img class="site-icon" src="/image/486.jpg" alt="Logo"><span class="site-name">橙心</span></a><a class="nav-page-title" href="/"><span class="site-name">LangChain 学习</span><span class="site-name"><i class="fa-solid fa-circle-arrow-left"></i><span>  返回首页</span></span></a></span><div id="menus"></div></nav><div id="post-info"><h1 class="post-title">LangChain 学习</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2026-04-20T15:55:55.000Z" title="发表于 2026-04-20 15:55:55">2026-04-20</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2026-04-21T03:21:21.223Z" title="更新于 2026-04-21 03:21:21">2026-04-21</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/AI/">AI</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/AI/%E5%AD%A6%E4%B9%A0%E8%B7%AF%E7%BA%BF/">学习路线</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">浏览量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><h2 id="📚-课程推荐"><a href="#📚-课程推荐" class="headerlink" title="📚 课程推荐"></a>📚 课程推荐</h2><h3 id="免费课程（优先推荐）"><a href="#免费课程（优先推荐）" class="headerlink" title="免费课程（优先推荐）"></a>免费课程（优先推荐）</h3><table>
+<thead>
+<tr>
+<th>课程</th>
+<th>平台</th>
+<th>时长</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>LangChain for LLM Application Development</strong></td>
+<td>DeepLearning.AI</td>
+<td>2 小时</td>
+<td>吴恩达出品，入门首选</td>
+</tr>
+<tr>
+<td><strong>RAG Fundamentals</strong></td>
+<td>DeepLearning.AI</td>
+<td>1 小时</td>
+<td>RAG 基础概念</td>
+</tr>
+<tr>
+<td><strong>Building Systems with LLMs</strong></td>
+<td>DeepLearning.AI</td>
+<td>3 小时</td>
+<td>系统设计与评估</td>
+</tr>
+<tr>
+<td><strong>LangChain 官方文档</strong></td>
+<td>langchain.com</td>
+<td>自学</td>
+<td>最新最权威</td>
+</tr>
+</tbody></table>
+<h3 id="中文课程"><a href="#中文课程" class="headerlink" title="中文课程"></a>中文课程</h3><table>
+<thead>
+<tr>
+<th>课程</th>
+<th>平台</th>
+<th>特点</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>AI 大模型应用开发实战训练营</strong></td>
+<td>知乎课堂</td>
+<td>项目驱动，有社群</td>
+</tr>
+<tr>
+<td><strong>李宏毅 LLM 课程</strong></td>
+<td>YouTube&#x2F;B 站</td>
+<td>理论深入，免费</td>
+</tr>
+<tr>
+<td><strong>RAG 从入门到实战</strong></td>
+<td>B 站&#x2F;知乎</td>
+<td>实战导向</td>
+</tr>
+</tbody></table>
+<hr>
+<h2 id="🗺️-学习路线（3-6-个月）"><a href="#🗺️-学习路线（3-6-个月）" class="headerlink" title="🗺️ 学习路线（3-6 个月）"></a>🗺️ 学习路线（3-6 个月）</h2><h3 id="第-1-阶段：Python-基础（2-4-周）"><a href="#第-1-阶段：Python-基础（2-4-周）" class="headerlink" title="第 1 阶段：Python 基础（2-4 周）"></a>第 1 阶段：Python 基础（2-4 周）</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">✅ 目标：能独立写 Python 脚本</span><br><span class="line">├── Python 语法基础</span><br><span class="line">├── 面向对象编程</span><br><span class="line">├── 异步编程 (asyncio)</span><br><span class="line">├── 常用库：requests, json, pathlib</span><br><span class="line">└── 项目：写一个爬虫或数据处理脚本</span><br></pre></td></tr></table></figure>
+
+<p><strong>推荐资源：</strong></p>
+<ul>
+<li>《Python 编程：从入门到实践》</li>
+<li>B 站：小甲鱼 Python 教程</li>
+</ul>
+<hr>
+<h3 id="第-2-阶段：LLM-基础（2-3-周）"><a href="#第-2-阶段：LLM-基础（2-3-周）" class="headerlink" title="第 2 阶段：LLM 基础（2-3 周）"></a>第 2 阶段：LLM 基础（2-3 周）</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">✅ 目标：理解 LLM 原理，会调用 API</span><br><span class="line">├── Transformer 基础概念</span><br><span class="line">├── Prompt Engineering</span><br><span class="line">├── 主流 API 使用 (OpenAI/Claude/通义/DeepSeek)</span><br><span class="line">├── Token 计算与成本优化</span><br><span class="line">└── 项目：用 API 做一个聊天机器人</span><br></pre></td></tr></table></figure>
+
+<p><strong>核心知识点：</strong></p>
+<ul>
+<li>Temperature&#x2F;Top-p 参数调节</li>
+<li>System&#x2F;User&#x2F;Assistant 消息结构</li>
+<li>流式输出 (streaming)</li>
+<li>错误处理与重试</li>
+</ul>
+<hr>
+<h3 id="第-3-阶段：LangChain-框架（3-4-周）"><a href="#第-3-阶段：LangChain-框架（3-4-周）" class="headerlink" title="第 3 阶段：LangChain 框架（3-4 周）"></a>第 3 阶段：LangChain 框架（3-4 周）</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">✅ 目标：能用 LangChain 构建应用</span><br><span class="line">├── ChatModel / LLM 调用</span><br><span class="line">├── Prompt Template</span><br><span class="line">├── Chain 链式调用</span><br><span class="line">├── Memory 上下文管理</span><br><span class="line">├── Document Loader</span><br><span class="line">├── Text Splitter</span><br><span class="line">├── Embedding &amp; VectorStore</span><br><span class="line">├── Retriever</span><br><span class="line">└── 项目：文档问答系统</span><br></pre></td></tr></table></figure>
+
+<p><strong>LangChain 核心模块：</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> langchain.chat_models <span class="keyword">import</span> ChatOpenAI</span><br><span class="line"><span class="keyword">from</span> langchain.prompts <span class="keyword">import</span> ChatPromptTemplate</span><br><span class="line"><span class="keyword">from</span> langchain.chains <span class="keyword">import</span> LLMChain</span><br><span class="line"><span class="keyword">from</span> langchain.memory <span class="keyword">import</span> ConversationBufferMemory</span><br><span class="line"><span class="keyword">from</span> langchain.document_loaders <span class="keyword">import</span> PyPDFLoader</span><br><span class="line"><span class="keyword">from</span> langchain.text_splitter <span class="keyword">import</span> RecursiveCharacterTextSplitter</span><br><span class="line"><span class="keyword">from</span> langchain.embeddings <span class="keyword">import</span> OpenAIEmbeddings</span><br><span class="line"><span class="keyword">from</span> langchain.vectorstores <span class="keyword">import</span> Chroma</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h3 id="第-4-阶段：RAG-实战（4-6-周）"><a href="#第-4-阶段：RAG-实战（4-6-周）" class="headerlink" title="第 4 阶段：RAG 实战（4-6 周）"></a>第 4 阶段：RAG 实战（4-6 周）</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">✅ 目标：能搭建生产级 RAG 系统</span><br><span class="line">├── 文档解析 (PDF/Word/Markdown)</span><br><span class="line">├── 文本分块策略</span><br><span class="line">├── Embedding 模型选择</span><br><span class="line">├── 向量数据库 (Chroma/Milvus)</span><br><span class="line">├── 检索优化 (混合检索/重排序)</span><br><span class="line">├── 幻觉处理</span><br><span class="line">├── 效果评估</span><br><span class="line">└── 项目：企业知识库问答系统</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h3 id="第-5-阶段：工程化（4-6-周）"><a href="#第-5-阶段：工程化（4-6-周）" class="headerlink" title="第 5 阶段：工程化（4-6 周）"></a>第 5 阶段：工程化（4-6 周）</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">✅ 目标：能部署上线</span><br><span class="line">├── FastAPI 开发</span><br><span class="line">├── Docker 容器化</span><br><span class="line">├── 并发处理</span><br><span class="line">├── 日志监控</span><br><span class="line">├── 性能优化</span><br><span class="line">└── 项目：完整上线一个 RAG 应用</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="🔨-完整-RAG-项目推荐"><a href="#🔨-完整-RAG-项目推荐" class="headerlink" title="🔨 完整 RAG 项目推荐"></a>🔨 完整 RAG 项目推荐</h2><h3 id="项目：企业知识库问答系统"><a href="#项目：企业知识库问答系统" class="headerlink" title="项目：企业知识库问答系统"></a>项目：企业知识库问答系统</h3><p><strong>场景</strong>：公司有大量产品文档&#x2F;手册，客服需要快速查找答案</p>
+<hr>
+<h3 id="技术栈"><a href="#技术栈" class="headerlink" title="技术栈"></a>技术栈</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">┌─────────────────────────────────────────┐</span><br><span class="line">│              前端 (可选)                  │</span><br><span class="line">│           Streamlit / Vue               │</span><br><span class="line">├─────────────────────────────────────────┤</span><br><span class="line">│              后端 API                     │</span><br><span class="line">│           FastAPI + Uvicorn             │</span><br><span class="line">├─────────────────────────────────────────┤</span><br><span class="line">│           RAG 核心逻辑                    │</span><br><span class="line">│    LangChain + Chroma + DeepSeek        │</span><br><span class="line">├─────────────────────────────────────────┤</span><br><span class="line">│              数据存储                     │</span><br><span class="line">│    向量库：Chroma / 文件：本地/云存储    │</span><br><span class="line">└─────────────────────────────────────────┘</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h3 id="项目结构"><a href="#项目结构" class="headerlink" title="项目结构"></a>项目结构</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">rag-kb-bot/</span><br><span class="line">├── data/                    # 知识库文档</span><br><span class="line">│   ├── products/           # 产品手册</span><br><span class="line">│   ├── faq/               # 常见问题</span><br><span class="line">│   └── policies/          # 政策文档</span><br><span class="line">├── src/</span><br><span class="line">│   ├── __init__.py</span><br><span class="line">│   ├── config.py          # 配置</span><br><span class="line">│   ├── loader.py          # 文档加载</span><br><span class="line">│   ├── splitter.py        # 文本分块</span><br><span class="line">│   ├── embedding.py       # 向量化</span><br><span class="line">│   ├── retriever.py       # 检索</span><br><span class="line">│   ├── generator.py       # 答案生成</span><br><span class="line">│   └── api.py            # FastAPI 接口</span><br><span class="line">├── vectorstore/           # 向量数据库</span><br><span class="line">├── tests/                 # 测试</span><br><span class="line">├── requirements.txt</span><br><span class="line">├── Dockerfile</span><br><span class="line">└── README.md</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h3 id="核心代码示例"><a href="#核心代码示例" class="headerlink" title="核心代码示例"></a>核心代码示例</h3><h4 id="1️⃣-文档加载与分块"><a href="#1️⃣-文档加载与分块" class="headerlink" title="1️⃣ 文档加载与分块"></a>1️⃣ 文档加载与分块</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># src/loader.py</span></span><br><span class="line"><span class="keyword">from</span> langchain.document_loaders <span class="keyword">import</span> DirectoryLoader, PyPDFLoader</span><br><span class="line"><span class="keyword">from</span> langchain.text_splitter <span class="keyword">import</span> RecursiveCharacterTextSplitter</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">load_documents</span>(<span class="params">data_dir: <span class="built_in">str</span></span>):</span><br><span class="line">    <span class="string">&quot;&quot;&quot;加载指定目录下的所有文档&quot;&quot;&quot;</span></span><br><span class="line">    loader = DirectoryLoader(</span><br><span class="line">        data_dir,</span><br><span class="line">        glob=<span class="string">&quot;**/*.pdf&quot;</span>,</span><br><span class="line">        loader_cls=PyPDFLoader</span><br><span class="line">    )</span><br><span class="line">    documents = loader.load()</span><br><span class="line">    <span class="keyword">return</span> documents</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">split_documents</span>(<span class="params">documents, chunk_size=<span class="number">500</span>, chunk_overlap=<span class="number">50</span></span>):</span><br><span class="line">    <span class="string">&quot;&quot;&quot;文本分块&quot;&quot;&quot;</span></span><br><span class="line">    splitter = RecursiveCharacterTextSplitter(</span><br><span class="line">        chunk_size=chunk_size,</span><br><span class="line">        chunk_overlap=chunk_overlap,</span><br><span class="line">        separators=[<span class="string">&quot;\n\n&quot;</span>, <span class="string">&quot;\n&quot;</span>, <span class="string">&quot;。&quot;</span>, <span class="string">&quot;！&quot;</span>, <span class="string">&quot;？&quot;</span>, <span class="string">&quot; &quot;</span>, <span class="string">&quot;&quot;</span>]</span><br><span class="line">    )</span><br><span class="line">    chunks = splitter.split_documents(documents)</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">f&quot;分块完成：<span class="subst">&#123;<span class="built_in">len</span>(chunks)&#125;</span> 个 chunks&quot;</span>)</span><br><span class="line">    <span class="keyword">return</span> chunks</span><br></pre></td></tr></table></figure>
+
+<h4 id="2️⃣-向量化与存储"><a href="#2️⃣-向量化与存储" class="headerlink" title="2️⃣ 向量化与存储"></a>2️⃣ 向量化与存储</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># src/embedding.py</span></span><br><span class="line"><span class="keyword">from</span> langchain.embeddings <span class="keyword">import</span> OpenAIEmbeddings</span><br><span class="line"><span class="keyword">from</span> langchain.vectorstores <span class="keyword">import</span> Chroma</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">create_vectorstore</span>(<span class="params">chunks, persist_dir=<span class="string">&quot;./vectorstore&quot;</span></span>):</span><br><span class="line">    <span class="string">&quot;&quot;&quot;创建向量数据库&quot;&quot;&quot;</span></span><br><span class="line">    <span class="comment"># 使用 DeepSeek 或其他兼容 API</span></span><br><span class="line">    embeddings = OpenAIEmbeddings(</span><br><span class="line">        openai_api_key=<span class="string">&quot;sk-xxx&quot;</span>,</span><br><span class="line">        openai_api_base=<span class="string">&quot;https://api.deepseek.com/v1&quot;</span>,</span><br><span class="line">        model=<span class="string">&quot;deepseek-embed&quot;</span></span><br><span class="line">    )</span><br><span class="line">    </span><br><span class="line">    vectorstore = Chroma.from_documents(</span><br><span class="line">        documents=chunks,</span><br><span class="line">        embedding=embeddings,</span><br><span class="line">        persist_directory=persist_dir</span><br><span class="line">    )</span><br><span class="line">    <span class="keyword">return</span> vectorstore</span><br></pre></td></tr></table></figure>
+
+<h4 id="3️⃣-检索与生成"><a href="#3️⃣-检索与生成" class="headerlink" title="3️⃣ 检索与生成"></a>3️⃣ 检索与生成</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># src/retriever.py</span></span><br><span class="line"><span class="keyword">from</span> langchain.chains <span class="keyword">import</span> RetrievalQA</span><br><span class="line"><span class="keyword">from</span> langchain.chat_models <span class="keyword">import</span> ChatOpenAI</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">create_rag_chain</span>(<span class="params">vectorstore, model_name=<span class="string">&quot;deepseek-chat&quot;</span></span>):</span><br><span class="line">    <span class="string">&quot;&quot;&quot;创建 RAG 问答链&quot;&quot;&quot;</span></span><br><span class="line">    llm = ChatOpenAI(</span><br><span class="line">        openai_api_key=<span class="string">&quot;sk-xxx&quot;</span>,</span><br><span class="line">        openai_api_base=<span class="string">&quot;https://api.deepseek.com/v1&quot;</span>,</span><br><span class="line">        model=model_name,</span><br><span class="line">        temperature=<span class="number">0.3</span>  <span class="comment"># 降低幻觉</span></span><br><span class="line">    )</span><br><span class="line">    </span><br><span class="line">    retriever = vectorstore.as_retriever(</span><br><span class="line">        search_type=<span class="string">&quot;similarity_score_threshold&quot;</span>,</span><br><span class="line">        search_kwargs=&#123;</span><br><span class="line">            <span class="string">&quot;k&quot;</span>: <span class="number">5</span>,              <span class="comment"># 返回 5 个最相关文档</span></span><br><span class="line">            <span class="string">&quot;score_threshold&quot;</span>: <span class="number">0.7</span>  <span class="comment"># 相似度阈值</span></span><br><span class="line">        &#125;</span><br><span class="line">    )</span><br><span class="line">    </span><br><span class="line">    qa_chain = RetrievalQA.from_chain_type(</span><br><span class="line">        llm=llm,</span><br><span class="line">        chain_type=<span class="string">&quot;stuff&quot;</span>,</span><br><span class="line">        retriever=retriever,</span><br><span class="line">        return_source_documents=<span class="literal">True</span>,</span><br><span class="line">        chain_type_kwargs=&#123;</span><br><span class="line">            <span class="string">&quot;prompt&quot;</span>: create_prompt()</span><br><span class="line">        &#125;</span><br><span class="line">    )</span><br><span class="line">    <span class="keyword">return</span> qa_chain</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">create_prompt</span>():</span><br><span class="line">    <span class="string">&quot;&quot;&quot;自定义 Prompt&quot;&quot;&quot;</span></span><br><span class="line">    <span class="keyword">from</span> langchain.prompts <span class="keyword">import</span> PromptTemplate</span><br><span class="line">    </span><br><span class="line">    template = <span class="string">&quot;&quot;&quot;你是一个专业的客服助手。请根据以下参考信息回答问题。</span></span><br><span class="line"><span class="string">如果参考信息中没有答案，请直接说&quot;抱歉，我没有找到相关信息&quot;。</span></span><br><span class="line"><span class="string">回答时请注明信息来源。</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">参考信息：</span></span><br><span class="line"><span class="string">&#123;context&#125;</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">问题：&#123;question&#125;</span></span><br><span class="line"><span class="string">回答：&quot;&quot;&quot;</span></span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> PromptTemplate(</span><br><span class="line">        template=template,</span><br><span class="line">        input_variables=[<span class="string">&quot;context&quot;</span>, <span class="string">&quot;question&quot;</span>]</span><br><span class="line">    )</span><br></pre></td></tr></table></figure>
+
+<h4 id="4️⃣-API-接口"><a href="#4️⃣-API-接口" class="headerlink" title="4️⃣ API 接口"></a>4️⃣ API 接口</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># src/api.py</span></span><br><span class="line"><span class="keyword">from</span> fastapi <span class="keyword">import</span> FastAPI, HTTPException</span><br><span class="line"><span class="keyword">from</span> pydantic <span class="keyword">import</span> BaseModel</span><br><span class="line"><span class="keyword">from</span> .retriever <span class="keyword">import</span> create_rag_chain</span><br><span class="line"></span><br><span class="line">app = FastAPI()</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Question</span>(<span class="title class_ inherited__">BaseModel</span>):</span><br><span class="line">    question: <span class="built_in">str</span></span><br><span class="line">    top_k: <span class="built_in">int</span> = <span class="number">5</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Answer</span>(<span class="title class_ inherited__">BaseModel</span>):</span><br><span class="line">    answer: <span class="built_in">str</span></span><br><span class="line">    sources: <span class="built_in">list</span>[<span class="built_in">str</span>]</span><br><span class="line"></span><br><span class="line"><span class="meta">@app.post(<span class="params"><span class="string">&quot;/ask&quot;</span>, response_model=Answer</span>)</span></span><br><span class="line"><span class="keyword">async</span> <span class="keyword">def</span> <span class="title function_">ask_question</span>(<span class="params">q: Question</span>):</span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        result = qa_chain(&#123;<span class="string">&quot;query&quot;</span>: q.question&#125;)</span><br><span class="line">        sources = [doc.page_content <span class="keyword">for</span> doc <span class="keyword">in</span> result[<span class="string">&quot;source_documents&quot;</span>]]</span><br><span class="line">        <span class="keyword">return</span> Answer(</span><br><span class="line">            answer=result[<span class="string">&quot;result&quot;</span>],</span><br><span class="line">            sources=sources</span><br><span class="line">        )</span><br><span class="line">    <span class="keyword">except</span> Exception <span class="keyword">as</span> e:</span><br><span class="line">        <span class="keyword">raise</span> HTTPException(status_code=<span class="number">500</span>, detail=<span class="built_in">str</span>(e))</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h3 id="5️⃣-部署"><a href="#5️⃣-部署" class="headerlink" title="5️⃣ 部署"></a>5️⃣ 部署</h3><figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Dockerfile</span></span><br><span class="line"><span class="keyword">FROM</span> python:<span class="number">3.11</span>-slim</span><br><span class="line"></span><br><span class="line"><span class="keyword">WORKDIR</span><span class="language-bash"> /app</span></span><br><span class="line"><span class="keyword">COPY</span><span class="language-bash"> requirements.txt .</span></span><br><span class="line"><span class="keyword">RUN</span><span class="language-bash"> pip install -r requirements.txt</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">COPY</span><span class="language-bash"> . .</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">EXPOSE</span> <span class="number">8000</span></span><br><span class="line"><span class="keyword">CMD</span><span class="language-bash"> [<span class="string">&quot;uvicorn&quot;</span>, <span class="string">&quot;src.api:app&quot;</span>, <span class="string">&quot;--host&quot;</span>, <span class="string">&quot;0.0.0.0&quot;</span>, <span class="string">&quot;--port&quot;</span>, <span class="string">&quot;8000&quot;</span>]</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 构建并运行</span></span><br><span class="line">docker build -t rag-kb-bot .</span><br><span class="line">docker run -p 8000:8000 rag-kb-bot</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="📋-项目进阶优化"><a href="#📋-项目进阶优化" class="headerlink" title="📋 项目进阶优化"></a>📋 项目进阶优化</h2><table>
+<thead>
+<tr>
+<th>优化方向</th>
+<th>具体做法</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>检索优化</strong></td>
+<td>混合检索 (BM25+ 向量)、Query 改写、多路召回</td>
+</tr>
+<tr>
+<td><strong>分块优化</strong></td>
+<td>按语义分块、父子文档检索</td>
+</tr>
+<tr>
+<td><strong>重排序</strong></td>
+<td>用 Cross-Encoder 对检索结果重排序</td>
+</tr>
+<tr>
+<td><strong>缓存</strong></td>
+<td>Redis 缓存相似问题答案</td>
+</tr>
+<tr>
+<td><strong>监控</strong></td>
+<td>记录用户反馈、bad case 分析</td>
+</tr>
+<tr>
+<td><strong>评估</strong></td>
+<td>构建测试集，计算准确率&#x2F;召回率</td>
+</tr>
+</tbody></table>
+<hr>
+<h2 id="🎯-学习建议"><a href="#🎯-学习建议" class="headerlink" title="🎯 学习建议"></a>🎯 学习建议</h2><ol>
+<li><strong>先跑通再优化</strong>：第一个项目不要追求完美，先让系统跑起来</li>
+<li><strong>记录踩坑过程</strong>：这些都是面试时的谈资</li>
+<li><strong>部署上线</strong>：哪怕只是本地运行，也比只跑过 Demo 强</li>
+<li><strong>写技术博客</strong>：总结学习过程，建立个人品牌</li>
+<li><strong>参与开源</strong>：给 LangChain 等提 PR 或写文档</li>
+</ol>
+<hr>
+<h2 id="📦-快速开始命令"><a href="#📦-快速开始命令" class="headerlink" title="📦 快速开始命令"></a>📦 快速开始命令</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 1. 创建项目</span></span><br><span class="line"><span class="built_in">mkdir</span> rag-kb-bot &amp;&amp; <span class="built_in">cd</span> rag-kb-bot</span><br><span class="line">python -m venv venv</span><br><span class="line"><span class="built_in">source</span> venv/bin/activate</span><br><span class="line"></span><br><span class="line"><span class="comment"># 2. 安装依赖</span></span><br><span class="line">pip install langchain langchain-community chromadb fastapi uvicorn pypdf</span><br><span class="line"></span><br><span class="line"><span class="comment"># 3. 准备数据</span></span><br><span class="line"><span class="built_in">mkdir</span> -p data/products</span><br><span class="line"><span class="comment"># 放入一些 PDF 文档</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 4. 运行</span></span><br><span class="line">python src/loader.py</span><br><span class="line">python src/api.py</span><br></pre></td></tr></table></figure>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://orangeheart.top">橙心</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="https://orangeheart.top/posts/ai-luo-di-gang-xue-xi-lu-xian.html">https://orangeheart.top/posts/ai-luo-di-gang-xue-xi-lu-xian.html</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来源 <a href="https://orangeheart.top" target="_blank">橙心</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/LangChain/">LangChain</a><a class="post-meta__tags" href="/tags/RAG/">RAG</a><a class="post-meta__tags" href="/tags/LLM/">LLM</a><a class="post-meta__tags" href="/tags/Python/">Python</a></div><div class="post-share"><div class="social-share" data-image="/image/486.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><a class="pagination-related full-width" href="/posts/qian-ru-shi-yi-you-ying-jian.html" title="嵌入式硬件清单"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-right"><div class="info-1"><div class="info-item-1">下一篇</div><div class="info-item-2">嵌入式硬件清单</div></div><div class="info-2"><div class="info-item-1"> STM32F103C8T6 HC SR04超声波 CH340G usb转ttl LCD1602A DHT11 SG90舵机 ST-link v2  涛哥的:  RGB TFT 1.8 128*160 GY87 (好像是陀螺仪)  </div></div></div></a></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><a class="pagination-related" href="/posts/langchain-bi-ji.html" title="LangChain 笔记"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2026-03-26</div><div class="info-item-2">LangChain 笔记</div></div><div class="info-2"><div class="info-item-1">userLangChain+LangGraph开发实战全套视频课程 大语言模型Transformer自注意力机制实质上就是向量的加减法  ![[Pasted image 20260326150023.png]] Transformer流程 词向量化  attention  MLP:多层感知机,基于分析进一步调整向量值  attention和MLP  多次重复  softmax:向量转化为词汇  , 但是实际上是给出一个token以及对应token的概率分布  采用随机采样的方式,为了具备多样性,也就是temperature参数    早期的 Transformer模型确实是纯粹的概率分布的大预言模型,模型参数量的升级以及训练数据量的升级  Transformer本来是作为翻译用的，但当模型规模和训练数据量增突破某个临界点时，模型像是突然拥有了智能，不仅可以理解人类语言，还能推理、分析。这种现象被称为“涌现”（EmergentAbilities）。这种超大规模的语言模型则被称为大语言模型   记忆丢失问题 因为是计算出来的,所以上下文长度如果太大的话,那么计算量就会很大,就算不过来...</div></div></div></a><a class="pagination-related" href="/posts/python-bi-ji.html" title="Python 笔记"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2026-04-20</div><div class="info-item-2">Python 笔记</div></div><div class="info-2"><div class="info-item-1">Python 笔记#代码 #Python #学习 #已完成 isinstance VS typeisinstance 和 type 的区别在于： -   type()不会认为子类是一种父类类型。 		`type(A()) == A` -   isinstance()会认为子类是一种父类类型。 		`isinstance(A(), A)`  装饰器decorator1234567def dec(f):	pass@decdef double(x):	return x * 2  decorator含义就是将下面的函数作为参数传递给@后面的函数 异常(Python内置标准异常及其解析)Python 标准异常总结    异常名称 描述    Exception 所有异常的基类   StopIteration 当一个迭代器的 next()方法不指向任何对象时引发   SystemExit 由 sys.exit()函数引发   StandardError 除了StopIteration异常和SystemExit，所有内置异常的基类   ArithmeticError 数值计算所发生的所有错误的...</div></div></div></a></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="/image/486.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">橙心</div><div class="author-info-description"></div><div class="site-data"><a href="/archives/"><div class="headline">文章</div><div class="length-num">8</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">18</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">6</div></a></div><a id="card-info-btn"><i class="iconfont icon-youxishoubing"></i><span></span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content"></div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%F0%9F%93%9A-%E8%AF%BE%E7%A8%8B%E6%8E%A8%E8%8D%90"><span class="toc-number">1.</span> <span class="toc-text">📚 课程推荐</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%8D%E8%B4%B9%E8%AF%BE%E7%A8%8B%EF%BC%88%E4%BC%98%E5%85%88%E6%8E%A8%E8%8D%90%EF%BC%89"><span class="toc-number">1.1.</span> <span class="toc-text">免费课程（优先推荐）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%AD%E6%96%87%E8%AF%BE%E7%A8%8B"><span class="toc-number">1.2.</span> <span class="toc-text">中文课程</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%F0%9F%97%BA%EF%B8%8F-%E5%AD%A6%E4%B9%A0%E8%B7%AF%E7%BA%BF%EF%BC%883-6-%E4%B8%AA%E6%9C%88%EF%BC%89"><span class="toc-number">2.</span> <span class="toc-text">🗺️ 学习路线（3-6 个月）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC-1-%E9%98%B6%E6%AE%B5%EF%BC%9APython-%E5%9F%BA%E7%A1%80%EF%BC%882-4-%E5%91%A8%EF%BC%89"><span class="toc-number">2.1.</span> <span class="toc-text">第 1 阶段：Python 基础（2-4 周）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC-2-%E9%98%B6%E6%AE%B5%EF%BC%9ALLM-%E5%9F%BA%E7%A1%80%EF%BC%882-3-%E5%91%A8%EF%BC%89"><span class="toc-number">2.2.</span> <span class="toc-text">第 2 阶段：LLM 基础（2-3 周）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC-3-%E9%98%B6%E6%AE%B5%EF%BC%9ALangChain-%E6%A1%86%E6%9E%B6%EF%BC%883-4-%E5%91%A8%EF%BC%89"><span class="toc-number">2.3.</span> <span class="toc-text">第 3 阶段：LangChain 框架（3-4 周）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC-4-%E9%98%B6%E6%AE%B5%EF%BC%9ARAG-%E5%AE%9E%E6%88%98%EF%BC%884-6-%E5%91%A8%EF%BC%89"><span class="toc-number">2.4.</span> <span class="toc-text">第 4 阶段：RAG 实战（4-6 周）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC-5-%E9%98%B6%E6%AE%B5%EF%BC%9A%E5%B7%A5%E7%A8%8B%E5%8C%96%EF%BC%884-6-%E5%91%A8%EF%BC%89"><span class="toc-number">2.5.</span> <span class="toc-text">第 5 阶段：工程化（4-6 周）</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%F0%9F%94%A8-%E5%AE%8C%E6%95%B4-RAG-%E9%A1%B9%E7%9B%AE%E6%8E%A8%E8%8D%90"><span class="toc-number">3.</span> <span class="toc-text">🔨 完整 RAG 项目推荐</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%A1%B9%E7%9B%AE%EF%BC%9A%E4%BC%81%E4%B8%9A%E7%9F%A5%E8%AF%86%E5%BA%93%E9%97%AE%E7%AD%94%E7%B3%BB%E7%BB%9F"><span class="toc-number">3.1.</span> <span class="toc-text">项目：企业知识库问答系统</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8A%80%E6%9C%AF%E6%A0%88"><span class="toc-number">3.2.</span> <span class="toc-text">技术栈</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%A1%B9%E7%9B%AE%E7%BB%93%E6%9E%84"><span class="toc-number">3.3.</span> <span class="toc-text">项目结构</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A0%B8%E5%BF%83%E4%BB%A3%E7%A0%81%E7%A4%BA%E4%BE%8B"><span class="toc-number">3.4.</span> <span class="toc-text">核心代码示例</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1%EF%B8%8F%E2%83%A3-%E6%96%87%E6%A1%A3%E5%8A%A0%E8%BD%BD%E4%B8%8E%E5%88%86%E5%9D%97"><span class="toc-number">3.4.1.</span> <span class="toc-text">1️⃣ 文档加载与分块</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2%EF%B8%8F%E2%83%A3-%E5%90%91%E9%87%8F%E5%8C%96%E4%B8%8E%E5%AD%98%E5%82%A8"><span class="toc-number">3.4.2.</span> <span class="toc-text">2️⃣ 向量化与存储</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3%EF%B8%8F%E2%83%A3-%E6%A3%80%E7%B4%A2%E4%B8%8E%E7%94%9F%E6%88%90"><span class="toc-number">3.4.3.</span> <span class="toc-text">3️⃣ 检索与生成</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4%EF%B8%8F%E2%83%A3-API-%E6%8E%A5%E5%8F%A3"><span class="toc-number">3.4.4.</span> <span class="toc-text">4️⃣ API 接口</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5%EF%B8%8F%E2%83%A3-%E9%83%A8%E7%BD%B2"><span class="toc-number">3.5.</span> <span class="toc-text">5️⃣ 部署</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%F0%9F%93%8B-%E9%A1%B9%E7%9B%AE%E8%BF%9B%E9%98%B6%E4%BC%98%E5%8C%96"><span class="toc-number">4.</span> <span class="toc-text">📋 项目进阶优化</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%F0%9F%8E%AF-%E5%AD%A6%E4%B9%A0%E5%BB%BA%E8%AE%AE"><span class="toc-number">5.</span> <span class="toc-text">🎯 学习建议</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%F0%9F%93%A6-%E5%BF%AB%E9%80%9F%E5%BC%80%E5%A7%8B%E5%91%BD%E4%BB%A4"><span class="toc-number">6.</span> <span class="toc-text">📦 快速开始命令</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/ai-luo-di-gang-xue-xi-lu-xian.html" title="LangChain 学习">LangChain 学习</a><time datetime="2026-04-20T15:55:55.000Z" title="发表于 2026-04-20 15:55:55">2026-04-20</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/python-bi-ji.html" title="Python 笔记">Python 笔记</a><time datetime="2026-04-20T00:00:00.000Z" title="发表于 2026-04-20 00:00:00">2026-04-20</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/zi-tai-shi-bie-dian-zi-zhuo-mian-ri-li-xi-tong-ti-shi-ci-xiang-guan.html" title="嵌入式项目开发指南 - 姿态识别电子桌面日历系统">嵌入式项目开发指南 - 姿态识别电子桌面日历系统</a><time datetime="2026-04-20T00:00:00.000Z" title="发表于 2026-04-20 00:00:00">2026-04-20</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/qian-ru-shi-yi-you-ying-jian.html" title="嵌入式硬件清单">嵌入式硬件清单</a><time datetime="2026-04-20T00:00:00.000Z" title="发表于 2026-04-20 00:00:00">2026-04-20</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/cluade-code-ji-qiao.html" title="Claude Code 隐藏命令与效率技巧">Claude Code 隐藏命令与效率技巧</a><time datetime="2026-04-14T00:00:00.000Z" title="发表于 2026-04-14 00:00:00">2026-04-14</time></div></div></div></div></div></div></main><footer id="footer"><div class="footer-other"><div class="footer-copyright"><span class="copyright">&copy;&nbsp;2025 - 2026 By 橙心</span><span class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo 7.3.0</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly 5.4.3</a></span></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><div class="js-pjax"></div><script id="canvas_nest" defer="defer" color="0,0,255" opacity="0.7" zIndex="-1" count="99" mobile="false" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/canvas-nest.min.js"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>

@@ -1,0 +1,246 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>橙心</title><meta name="author" content="橙心"><meta name="copyright" content="橙心"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta property="og:type" content="website">
+<meta property="og:title" content="橙心">
+<meta property="og:url" content="https://orangeheart.top/index.html">
+<meta property="og:site_name" content="橙心">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://orangeheart.top/image/486.jpg">
+<meta property="article:author" content="橙心">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://orangeheart.top/image/486.jpg"><script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "橙心",
+  "url": "https://orangeheart.top/"
+}</script><link rel="shortcut icon" href="/image/%E5%B0%8F%E7%8B%97.png"><link rel="canonical" href="https://orangeheart.top/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":false},
+  copy: {
+    success: '复制成功',
+    error: '复制失败',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'null',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyloadPlugin: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '橙心',
+  isHighlightShrink: false,
+  isToc: false,
+  pageType: 'home'
+}</script><meta name="generator" content="Hexo 7.3.0"></head><body><div class="page" id="body-wrap"><header class="full_page" id="page-header" style="background-image: url(/image/ihli.webp);"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><img class="site-icon" src="/image/486.jpg" alt="Logo"><span class="site-name">橙心</span></a></span><div id="menus"></div></nav><div id="site-info"><h1 id="site-title">橙心</h1><div id="site-subtitle"><span id="subtitle"></span></div></div><div id="scroll-down"><i class="fas fa-angle-down scroll-down-effects"></i></div></header><main class="layout" id="content-inner"><div class="recent-posts nc" id="recent-posts"><div class="recent-post-items"><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/posts/ai-luo-di-gang-xue-xi-lu-xian.html" title="LangChain 学习">LangChain 学习</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2026-04-20T15:55:55.000Z" title="发表于 2026-04-20 15:55:55">2026-04-20</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/AI/">AI</a><i class="fas fa-angle-right article-meta-link"></i><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/AI/%E5%AD%A6%E4%B9%A0%E8%B7%AF%E7%BA%BF/">学习路线</a></span></div><div class="content">📚 课程推荐免费课程（优先推荐）   课程 平台 时长 说明    LangChain for LLM Application Development DeepLearning.AI 2 小时 吴恩达出品，入门首选   RAG Fundamentals DeepLearning.AI 1 小时 RAG 基础概念   Building Systems with LLMs DeepLearning.AI 3 小时 系统设计与评估   LangChain 官方文档 langchain.com 自学 最新最权威   中文课程   课程 平台 特点    AI 大模型应用开发实战训练营 知乎课堂 项目驱动，有社群   李宏毅 LLM 课程 YouTube&#x2F;B 站 理论深入，免费   RAG 从入门到实战 B 站&#x2F;知乎 实战导向    🗺️ 学习路线（3-6 个月）第 1 阶段：Python 基础（2-4 周）123456✅ 目标：能独立写 Python 脚本├── Python 语法基础├── 面向对象编程├── 异步编程 (asyncio)├── 常用库：requ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/posts/python-bi-ji.html" title="Python 笔记">Python 笔记</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2026-04-20T00:00:00.000Z" title="发表于 2026-04-20 00:00:00">2026-04-20</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E7%BC%96%E7%A8%8B/">编程</a></span></div><div class="content">Python 笔记#代码 #Python #学习 #已完成 isinstance VS typeisinstance 和 type 的区别在于： -   type()不会认为子类是一种父类类型。 		`type(A()) == A` -   isinstance()会认为子类是一种父类类型。 		`isinstance(A(), A)`  装饰器decorator1234567def dec(f):	pass@decdef double(x):	return x * 2  decorator含义就是将下面的函数作为参数传递给@后面的函数 异常(Python内置标准异常及其解析)Python 标准异常总结    异常名称 描述    Exception 所有异常的基类   StopIteration 当一个迭代器的 next()方法不指向任何对象时引发   SystemExit 由 sys.exit()函数引发   StandardError 除了StopIteration异常和SystemExit，所有内置异常的基类   ArithmeticError 数值计算所发生的所有错误的...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/posts/zi-tai-shi-bie-dian-zi-zhuo-mian-ri-li-xi-tong-ti-shi-ci-xiang-guan.html" title="嵌入式项目开发指南 - 姿态识别电子桌面日历系统">嵌入式项目开发指南 - 姿态识别电子桌面日历系统</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2026-04-20T00:00:00.000Z" title="发表于 2026-04-20 00:00:00">2026-04-20</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E5%B5%8C%E5%85%A5%E5%BC%8F/">嵌入式</a><i class="fas fa-angle-right article-meta-link"></i><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E5%B5%8C%E5%85%A5%E5%BC%8F/%E9%A1%B9%E7%9B%AE%E5%BC%80%E5%8F%91/">项目开发</a></span></div><div class="content">一、项目目标（写清楚给 Claude Code） 你可以直接用这段当项目描述： 使用 STM32F103C8T6 + GY-87 + 1.8寸 TFT（128x160 SPI）+ DHT11，实现一个姿态识别电子桌面日历系统。系统通过 IMU 检测翻转&#x2F;倾斜动作，切换不同信息页面（日期 &#x2F; 时间 &#x2F; 温湿度 &#x2F; 状态页），并在 TFT 上实时显示。系统支持低功耗待机与外部中断唤醒。 ⸻  二、系统模块拆分（Claude Code 工作单元） 这个项目建议拆成 5 个模块，让 AI 分别生成： Module 1：硬件抽象层（HAL封装） 内容：	•	GPIO初始化	•	SPI（TFT）	•	I2C（GY-87）	•	ADC（如果扩展）	•	Delay &#x2F; SysTick 输出： bsp_gpio.cbsp_spi.cbsp_i2c.cbsp_delay.c ⸻ Module 2：GY-87 姿态识别 功能：	•	MPU6050读取加速度 + 陀螺仪	•	简单姿态判断： 平放倒置左倾右倾翻转 核心算法（建议简单版）：	•	用加速度 z...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/posts/qian-ru-shi-yi-you-ying-jian.html" title="嵌入式硬件清单">嵌入式硬件清单</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2026-04-20T00:00:00.000Z" title="发表于 2026-04-20 00:00:00">2026-04-20</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E5%B5%8C%E5%85%A5%E5%BC%8F/">嵌入式</a></span></div><div class="content"> STM32F103C8T6 HC SR04超声波 CH340G usb转ttl LCD1602A DHT11 SG90舵机 ST-link v2  涛哥的:  RGB TFT 1.8 128*160 GY87 (好像是陀螺仪)  </div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/posts/cluade-code-ji-qiao.html" title="Claude Code 隐藏命令与效率技巧">Claude Code 隐藏命令与效率技巧</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2026-04-14T00:00:00.000Z" title="发表于 2026-04-14 00:00:00">2026-04-14</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E5%B7%A5%E5%85%B7/">工具</a></span></div><div class="content">Claude Code 隐藏命令与效率技巧（Obsidian 笔记） 来源：基于一篇实战经验整理，涵盖 /btw、/rewind、/insights、/model opusplan、/simplify、/branch、/loop、/remote-control、/export 及常用快捷键。  🚀 工作流与高级辅助/btw — 临时插话，不污染上下文 用法：在 Claude 执行长任务时，输入 /btw 然后提问。 效果：回答不会中断原任务，也不加入对话历史，几乎不消耗额外 token。 适用场景：突然想问“测试文件在哪个目录？”这类无关主任务的问题。  /rewind（或双击 Esc）— 智能回退 用法：输入 /rewind 或按两下 Esc，弹出菜单选择回退范围。 可选操作： 回退代码和对话 回退对话但保留代码 回退代码但保留对话 从该点开始压缩对话（释放上下文窗口）   适用场景：实验不同方案，失败后保留对话记忆，直接换方向。  📊 分析与效率提升/insights — 使用习惯分析报告 用法：输入 /insights，自动生成一份本地 HTML 报告。 内容：分析过去...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/posts/langchain-bi-ji.html" title="LangChain 笔记">LangChain 笔记</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2026-03-26T00:00:00.000Z" title="发表于 2026-03-26 00:00:00">2026-03-26</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/AI/">AI</a></span></div><div class="content">userLangChain+LangGraph开发实战全套视频课程 大语言模型Transformer自注意力机制实质上就是向量的加减法  ![[Pasted image 20260326150023.png]] Transformer流程 词向量化  attention  MLP:多层感知机,基于分析进一步调整向量值  attention和MLP  多次重复  softmax:向量转化为词汇  , 但是实际上是给出一个token以及对应token的概率分布  采用随机采样的方式,为了具备多样性,也就是temperature参数    早期的 Transformer模型确实是纯粹的概率分布的大预言模型,模型参数量的升级以及训练数据量的升级  Transformer本来是作为翻译用的，但当模型规模和训练数据量增突破某个临界点时，模型像是突然拥有了智能，不仅可以理解人类语言，还能推理、分析。这种现象被称为“涌现”（EmergentAbilities）。这种超大规模的语言模型则被称为大语言模型   记忆丢失问题 因为是计算出来的,所以上下文长度如果太大的话,那么计算量就会很大,就算不过来...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/posts/shi-jian-lei-fang-fa.html" title="C++ 时间类方法">C++ 时间类方法</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2026-01-30T00:00:00.000Z" title="发表于 2026-01-30 00:00:00">2026-01-30</time></span></div><div class="content">123456SYSTEMTIME st;::GetLocalTime(&amp;st);//当前时间TCHAR strLogPath[MAX_PATH];_stprintf_s(strLogPath, MAX_PATH, _T(&quot;%s\\%02d_%02d_%02d_%02d_%02d_%02d.csv&quot;), m_report.c_str(), st.wYear, st.wMonth, st.wDay, st.wHour, st.wMinute, st.wSecond);   123456struct tm tm;time_t t = time(NULL);localtime_s(&amp;tm, &amp;t);char buf[128];strftime(buf, sizeof(buf), &quot;%Y_%m_%d__%H_%M_%S&quot;, &amp;tm);   12345678910111213#include &lt;chrono&gt;chrono::steady_clock::time_point t1;t1 = chrono::st...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/posts/vcm-ce-shi.html" title="VCM 音圈电机测试规范">VCM 音圈电机测试规范</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2025-07-02T00:00:00.000Z" title="发表于 2025-07-02 00:00:00">2025-07-02</time></span></div><div class="content">VCM Stroke 行程致动器需要在闭环模式下在机械停止之间进行测试，包括一次上升行程和一次下降行程。每个行程都需要50步。      参数 最小值 最大值 单位 备注    线性度 - 3 微米    线性行程 103 - 微米    程序 将执行器移动到底部机械止挡。   执行上行程：a. 在50个相等步骤内将DAC从底部扫到顶部止挡b. 在每一步，等待执行器稳定并记录：   i. 输入DAC代码   ii. 霍尔传感器读数   将执行器移动到顶部机械止挡。   执行下行程：a. 在50个相等步骤内将DAC从底部扫到顶部止挡b. 在每一步，等待执行器稳定并记录：   i. 输入DAC代码   ii. 霍尔传感器读数   分别保存两个扫描数据集。   对于每个行程（上和下），执行以下操作：a. 对输入DAC代码与霍尔传感器读数应用线性回归b. 计算测量的霍尔传感器读数与可用行程的DAC代码之间的最大偏差，这将给出线性度c. 标识出偏差小于等于最大线性度规范（3微米）的最长连续范围d. 计算线性行程 &#x3D; max(霍尔传感器读数) - min(霍尔传感器读数)在该范围内...</div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="/image/486.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">橙心</div><div class="author-info-description"></div><div class="site-data"><a href="/archives/"><div class="headline">文章</div><div class="length-num">8</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">18</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">6</div></a></div><a id="card-info-btn"><i class="iconfont icon-youxishoubing"></i><span></span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content"></div></div><div class="sticky_layout"><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/ai-luo-di-gang-xue-xi-lu-xian.html" title="LangChain 学习">LangChain 学习</a><time datetime="2026-04-20T15:55:55.000Z" title="发表于 2026-04-20 15:55:55">2026-04-20</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/python-bi-ji.html" title="Python 笔记">Python 笔记</a><time datetime="2026-04-20T00:00:00.000Z" title="发表于 2026-04-20 00:00:00">2026-04-20</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/zi-tai-shi-bie-dian-zi-zhuo-mian-ri-li-xi-tong-ti-shi-ci-xiang-guan.html" title="嵌入式项目开发指南 - 姿态识别电子桌面日历系统">嵌入式项目开发指南 - 姿态识别电子桌面日历系统</a><time datetime="2026-04-20T00:00:00.000Z" title="发表于 2026-04-20 00:00:00">2026-04-20</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/qian-ru-shi-yi-you-ying-jian.html" title="嵌入式硬件清单">嵌入式硬件清单</a><time datetime="2026-04-20T00:00:00.000Z" title="发表于 2026-04-20 00:00:00">2026-04-20</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/cluade-code-ji-qiao.html" title="Claude Code 隐藏命令与效率技巧">Claude Code 隐藏命令与效率技巧</a><time datetime="2026-04-14T00:00:00.000Z" title="发表于 2026-04-14 00:00:00">2026-04-14</time></div></div></div></div><div class="card-widget card-categories"><div class="item-headline">
+            <i class="fas fa-folder-open"></i>
+            <span>分类</span>
+            
+          </div>
+          <ul class="card-category-list" id="aside-cat-list">
+            <li class="card-category-list-item "><a class="card-category-list-link" href="/categories/AI/"><span class="card-category-list-name">AI</span><span class="card-category-list-count">2</span></a><ul class="card-category-list child"><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/AI/%E5%AD%A6%E4%B9%A0%E8%B7%AF%E7%BA%BF/"><span class="card-category-list-name">学习路线</span><span class="card-category-list-count">1</span></a></li></ul></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E5%B5%8C%E5%85%A5%E5%BC%8F/"><span class="card-category-list-name">嵌入式</span><span class="card-category-list-count">2</span></a><ul class="card-category-list child"><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E5%B5%8C%E5%85%A5%E5%BC%8F/%E9%A1%B9%E7%9B%AE%E5%BC%80%E5%8F%91/"><span class="card-category-list-name">项目开发</span><span class="card-category-list-count">1</span></a></li></ul></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E5%B7%A5%E5%85%B7/"><span class="card-category-list-name">工具</span><span class="card-category-list-count">1</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E7%BC%96%E7%A8%8B/"><span class="card-category-list-name">编程</span><span class="card-category-list-count">1</span></a></li>
+          </ul></div><div class="card-widget card-tags"><div class="item-headline"><i class="fas fa-tags"></i><span>标签</span></div><div class="card-tag-cloud"><a href="/tags/LangChain/" style="font-size: 1.45em; color: rgb(50, 50, 173);">LangChain</a><a href="/tags/RAG/" style="font-size: 1.15em; color: rgb(199, 50, 115);">RAG</a><a href="/tags/LLM/" style="font-size: 1.45em; color: rgb(50, 58, 50);">LLM</a><a href="/tags/Python/" style="font-size: 1.45em; color: rgb(177, 102, 50);">Python</a><a href="/tags/Claude-Code/" style="font-size: 1.15em; color: rgb(121, 99, 142);">Claude Code</a><a href="/tags/CLI/" style="font-size: 1.15em; color: rgb(180, 50, 50);">CLI</a><a href="/tags/%E6%95%88%E7%8E%87%E6%8A%80%E5%B7%A7/" style="font-size: 1.15em; color: rgb(176, 100, 95);">效率技巧</a><a href="/tags/Transformer/" style="font-size: 1.15em; color: rgb(136, 158, 174);">Transformer</a><a href="/tags/%E8%A3%85%E9%A5%B0%E5%99%A8/" style="font-size: 1.15em; color: rgb(63, 151, 62);">装饰器</a><a href="/tags/%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86/" style="font-size: 1.15em; color: rgb(162, 50, 63);">异常处理</a><a href="/tags/%E7%94%9F%E6%88%90%E5%99%A8/" style="font-size: 1.15em; color: rgb(107, 84, 149);">生成器</a><a href="/tags/STM32/" style="font-size: 1.45em; color: rgb(192, 50, 65);">STM32</a><a href="/tags/MPU6050/" style="font-size: 1.15em; color: rgb(50, 50, 159);">MPU6050</a><a href="/tags/TFT/" style="font-size: 1.15em; color: rgb(102, 59, 50);">TFT</a><a href="/tags/DHT11/" style="font-size: 1.15em; color: rgb(180, 50, 50);">DHT11</a><a href="/tags/%E7%A1%AC%E4%BB%B6/" style="font-size: 1.15em; color: rgb(50, 154, 83);">硬件</a><a href="/tags/C/" style="font-size: 1.15em; color: rgb(59, 124, 50);">C++</a><a href="/tags/%E6%97%B6%E9%97%B4%E5%A4%84%E7%90%86/" style="font-size: 1.15em; color: rgb(50, 116, 109);">时间处理</a></div></div><div class="card-widget card-archives">
+    <div class="item-headline">
+      <i class="fas fa-archive"></i>
+      <span>归档</span>
+      
+    </div>
+  
+    <ul class="card-archive-list">
+      
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/archives/2026/04/">
+            <span class="card-archive-list-date">
+              四月 2026
+            </span>
+            <span class="card-archive-list-count">5</span>
+          </a>
+        </li>
+      
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/archives/2026/03/">
+            <span class="card-archive-list-date">
+              三月 2026
+            </span>
+            <span class="card-archive-list-count">1</span>
+          </a>
+        </li>
+      
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/archives/2026/01/">
+            <span class="card-archive-list-date">
+              一月 2026
+            </span>
+            <span class="card-archive-list-count">1</span>
+          </a>
+        </li>
+      
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/archives/2025/07/">
+            <span class="card-archive-list-date">
+              七月 2025
+            </span>
+            <span class="card-archive-list-count">1</span>
+          </a>
+        </li>
+      
+    </ul>
+  </div><div class="card-widget card-webinfo"><div class="item-headline"><i class="fas fa-chart-line"></i><span>网站信息</span></div><div class="webinfo"><div class="webinfo-item"><div class="item-name">文章数目 :</div><div class="item-count">8</div></div><div class="webinfo-item"><div class="item-name">本站访客数 :</div><div class="item-count" id="busuanzi_value_site_uv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">本站总浏览量 :</div><div class="item-count" id="busuanzi_value_site_pv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">最后更新时间 :</div><div class="item-count" id="last-push-date" data-lastPushDate="2026-04-21T03:21:41.838Z"><i class="fa-solid fa-spinner fa-spin"></i></div></div></div></div></div></div></main><footer id="footer"><div class="footer-other"><div class="footer-copyright"><span class="copyright">&copy;&nbsp;2025 - 2026 By 橙心</span><span class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo 7.3.0</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly 5.4.3</a></span></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><div class="js-pjax"><script>window.typedJSFn = {
+  init: str => {
+    window.typed = new Typed('#subtitle', Object.assign({
+      strings: str,
+      startDelay: 300,
+      typeSpeed: 150,
+      loop: true,
+      backSpeed: 50,
+    }, null))
+  },
+  run: subtitleType => {
+    if (true) {
+      if (typeof Typed === 'function') {
+        subtitleType()
+      } else {
+        btf.getScript('https://cdn.jsdelivr.net/npm/typed.js/dist/typed.umd.min.js').then(subtitleType)
+      }
+    } else {
+      subtitleType()
+    }
+  },
+  processSubtitle: (content, extraContents = []) => {
+    if (true) {
+      const sub = ["自小刺头深草里 &#44; 而今渐觉出蓬蒿","时人不识凌云木 &#44; 直待凌云始道高"].slice()
+
+      if (extraContents.length > 0) {
+        sub.unshift(...extraContents)
+      }
+
+      if (typeof content === 'string') {
+        sub.unshift(content)
+      } else if (Array.isArray(content)) {
+        sub.unshift(...content)
+      }
+
+      sub.length > 0 && typedJSFn.init(sub)
+    } else {
+      document.getElementById('subtitle').textContent = typeof content === 'string' ? content :
+        (Array.isArray(content) && content.length > 0 ? content[0] : '')
+    }
+  }
+}
+btf.addGlobalFn('pjaxSendOnce', () => { typed.destroy() }, 'typedDestroy')
+</script><script>function subtitleType () {
+  typedJSFn.processSubtitle(["自小刺头深草里 &#44; 而今渐觉出蓬蒿","时人不识凌云木 &#44; 直待凌云始道高"])
+}
+typedJSFn.run(subtitleType)</script></div><script id="canvas_nest" defer="defer" color="0,0,255" opacity="0.7" zIndex="-1" count="99" mobile="false" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/canvas-nest.min.js"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
