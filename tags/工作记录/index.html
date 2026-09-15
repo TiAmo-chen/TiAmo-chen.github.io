@@ -16,10 +16,11 @@
 <meta property="og:url" content="https://orangeheart.top/tags/%E5%B7%A5%E4%BD%9C%E8%AE%B0%E5%BD%95/">
 <meta name="twitter:card" content="summary">
 <meta name="generator" content="nano-blog · markdown-it-py + Pygments">
+<script>(function(){try{var t=localStorage.getItem('nano-blog-theme');if(t==='dark'||t==='light'){document.documentElement.dataset.theme=t}}catch(e){}})();</script>
 </head>
 <body>
 <div class="site">
-<header class="compact"><nav aria-label="主导航"><a href="/">首页</a><a href="/articles/">文章</a><a href="/tags/" aria-current="page">标签</a><a href="/about/">关于我</a></nav></header>
+<header class="compact"><nav aria-label="主导航"><a href="/">首页</a><a href="/articles/">文章</a><a href="/tags/" aria-current="page">标签</a><a href="/about/">关于我</a></nav><button class="theme-toggle" type="button" aria-label="切换日间/夜间模式" title="切换日间/夜间模式"><span class="tt-sun" aria-hidden="true">☀</span><span class="tt-moon" aria-hidden="true">☾</span></button></header>
 <main>
 <h1>工作记录</h1>
 <p class="muted">共 1 篇文章</p>
@@ -28,5 +29,6 @@
 <footer>WORKLOG / NOTES / TECH</footer>
 </div>
 
+<script>(function(){var b=document.querySelector('.theme-toggle');if(!b)return;b.addEventListener('click',function(){var d=document.documentElement,c=d.dataset.theme;if(c!=='dark'&&c!=='light'){c=window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light'}var n=c==='dark'?'light':'dark';d.dataset.theme=n;try{localStorage.setItem('nano-blog-theme',n)}catch(e){}b.setAttribute('title',n==='dark'?'切换到日间模式':'切换到夜间模式')})})();</script>
 </body>
 </html>
