@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>C++ 时间类方法 · 橙心</title>
+<meta name="description" content="cpp struct tm tm; timet t = time(NULL); localtimes(&amp;tm, &amp;t); char buf128; strftime(buf, si…">
+<meta name="author" content="橙心">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/articles.css">
+<link rel="canonical" href="https://orangeheart.top/articles/shi-jian-lei-fang-fa/">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="橙心">
+<meta property="og:title" content="C++ 时间类方法">
+<meta property="og:description" content="cpp struct tm tm; timet t = time(NULL); localtimes(&amp;tm, &amp;t); char buf128; strftime(buf, si…">
+<meta property="og:url" content="https://orangeheart.top/articles/shi-jian-lei-fang-fa/">
+<meta name="twitter:card" content="summary">
+<meta name="generator" content="nano-blog · markdown-it-py + Pygments">
+</head>
+<body>
+<div class="site">
+<header class="compact"><nav aria-label="主导航"><a href="/">首页</a><a href="/articles/" aria-current="page">文章</a><a href="/tags/">标签</a><a href="/about/">关于我</a></nav></header>
+<main>
+<article>
+<header class="article-header">
+<h1>C++ 时间类方法</h1>
+<div class="article-meta">
+<time datetime="2026-01-30">2026-01-30</time>
+<span class="dot">·</span>
+<span>1,525 字</span>
+<a class="tag" href="/tags/C%2B%2B/" rel="tag">C++</a><a class="tag" href="/tags/%E6%97%B6%E9%97%B4%E5%A4%84%E7%90%86/" rel="tag">时间处理</a>
+</div>
+</header>
+<div class="prose">
+<pre><code class="language-cpp"><span class="n">SYSTEMTIME</span><span class="w"> </span><span class="n">st</span><span class="p">;</span>
+<span class="o">::</span><span class="n">GetLocalTime</span><span class="p">(</span><span class="o">&amp;</span><span class="n">st</span><span class="p">);</span><span class="c1">//当前时间</span>
+<span class="n">TCHAR</span><span class="w"> </span><span class="n">strLogPath</span><span class="p">[</span><span class="n">MAX_PATH</span><span class="p">];</span>
+<span class="n">_stprintf_s</span><span class="p">(</span><span class="n">strLogPath</span><span class="p">,</span><span class="w"> </span><span class="n">MAX_PATH</span><span class="p">,</span><span class="w"> </span><span class="n">_T</span><span class="p">(</span><span class="s">"%s</span><span class="se">\\</span><span class="s">%02d_%02d_%02d_%02d_%02d_%02d.csv"</span><span class="p">),</span><span class="w"> </span><span class="n">m_report</span><span class="p">.</span><span class="n">c_str</span><span class="p">(),</span><span class="w"> </span><span class="n">st</span><span class="p">.</span><span class="n">wYear</span><span class="p">,</span><span class="w"> </span><span class="n">st</span><span class="p">.</span><span class="n">wMonth</span><span class="p">,</span><span class="w"> </span><span class="n">st</span><span class="p">.</span><span class="n">wDay</span><span class="p">,</span><span class="w"> </span><span class="n">st</span><span class="p">.</span><span class="n">wHour</span><span class="p">,</span><span class="w"> </span><span class="n">st</span><span class="p">.</span><span class="n">wMinute</span><span class="p">,</span><span class="w"> </span><span class="n">st</span><span class="p">.</span><span class="n">wSecond</span><span class="p">);</span>
+</code></pre>
+<hr>
+<pre><code class="language-cpp"><span class="k">struct</span><span class="w"> </span><span class="nc">tm</span><span class="w"> </span><span class="n">tm</span><span class="p">;</span>
+<span class="kt">time_t</span><span class="w"> </span><span class="n">t</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">time</span><span class="p">(</span><span class="nb">NULL</span><span class="p">);</span>
+<span class="n">localtime_s</span><span class="p">(</span><span class="o">&amp;</span><span class="n">tm</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">t</span><span class="p">);</span>
+<span class="kt">char</span><span class="w"> </span><span class="n">buf</span><span class="p">[</span><span class="mi">128</span><span class="p">];</span>
+<span class="n">strftime</span><span class="p">(</span><span class="n">buf</span><span class="p">,</span><span class="w"> </span><span class="k">sizeof</span><span class="p">(</span><span class="n">buf</span><span class="p">),</span><span class="w"> </span><span class="s">"%Y_%m_%d__%H_%M_%S"</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">tm</span><span class="p">);</span>
+</code></pre>
+<hr>
+<pre><code class="language-cpp"><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;chrono&gt;</span>
+<span class="n">chrono</span><span class="o">::</span><span class="n">steady_clock</span><span class="o">::</span><span class="n">time_point</span><span class="w"> </span><span class="n">t1</span><span class="p">;</span>
+<span class="n">t1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">chrono</span><span class="o">::</span><span class="n">steady_clock</span><span class="o">::</span><span class="n">now</span><span class="p">();</span>
+<span class="n">t2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">chrono</span><span class="o">::</span><span class="n">steady_clock</span><span class="o">::</span><span class="n">now</span><span class="p">();</span>
+<span class="n">AddThreadLog</span><span class="p">((</span><span class="n">boost</span><span class="o">::</span><span class="n">format</span><span class="p">(</span><span class="s">"%s[INFO]:Sensor烧录成功,总耗时:%dms"</span><span class="p">)</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="n">__FUNCTION__</span><span class="o">%</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">chrono</span><span class="o">::</span><span class="n">duration_cast</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">chrono</span><span class="o">::</span><span class="n">milliseconds</span><span class="o">&gt;</span><span class="p">(</span><span class="n">t2</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">t1</span><span class="p">).</span><span class="n">count</span><span class="p">()).</span><span class="n">str</span><span class="p">());</span>
+
+
+<span class="k">auto</span><span class="w"> </span><span class="n">tt</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">chrono</span><span class="o">::</span><span class="n">system_clock</span><span class="o">::</span><span class="n">to_time_t</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">chrono</span><span class="o">::</span><span class="n">system_clock</span><span class="o">::</span><span class="n">now</span><span class="p">());</span>
+<span class="k">struct</span><span class="w"> </span><span class="nc">tm</span><span class="o">*</span><span class="w"> </span><span class="n">ptm</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">localtime</span><span class="p">(</span><span class="o">&amp;</span><span class="n">tt</span><span class="p">);</span>
+
+<span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">fail_path</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">boost</span><span class="o">::</span><span class="n">format</span><span class="p">(</span><span class="s">"%s</span><span class="se">\\</span><span class="s">%s_%04d%02d%02d%02d%02d%02d.bmp"</span><span class="p">)</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="n">txtpath</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="n">product_sn</span><span class="p">.</span><span class="n">c_str</span><span class="p">()</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="p">(</span><span class="n">ptm</span><span class="o">-&gt;</span><span class="n">tm_year</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1900</span><span class="p">)</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="p">(</span><span class="n">ptm</span><span class="o">-&gt;</span><span class="n">tm_mon</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="p">(</span><span class="n">ptm</span><span class="o">-&gt;</span><span class="n">tm_mday</span><span class="p">)</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="p">(</span><span class="n">ptm</span><span class="o">-&gt;</span><span class="n">tm_hour</span><span class="p">)</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="p">(</span><span class="n">ptm</span><span class="o">-&gt;</span><span class="n">tm_min</span><span class="p">)</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="p">(</span><span class="n">ptm</span><span class="o">-&gt;</span><span class="n">tm_sec</span><span class="p">)).</span><span class="n">str</span><span class="p">();</span>
+</code></pre>
+<hr>
+<ul>
+<li>32位的无符号整数（<code>DWORD</code>）大约是49天,有溢出风险</li>
+</ul>
+<pre><code class="language-cpp"><span class="cp">#define _WIN32_WINNT 0x0600 </span><span class="c1">// Windows Vista</span>
+<span class="c1">//GetTickCount64必须使用的宏</span>
+<span class="n">ULONGLONG</span><span class="w"> </span><span class="n">start_time</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">GetTickCount64</span><span class="p">();</span>
+
+<span class="n">DWORD</span><span class="w"> </span><span class="n">end_time</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">GetTickCount</span><span class="p">();</span>
+</code></pre>
+<p><a href="https://learn.microsoft.com/zh-cn/windows/win32/api/sysinfoapi/nf-sysinfoapi-gettickcount64?redirectedfrom=MSDN">GetTickCount64 函数 (sysinfoapi.h) - Win32 apps | Microsoft Learn</a></p>
+<h2>延时的几种方法</h2>
+<p><a href="https://blog.csdn.net/Littlehero_121/article/details/104021642"># C++中延时的几种使用方式</a></p>
+<p><a href="https://blog.csdn.net/caohongfei881/article/details/100631743"># 计时器使用steady_clock还是high_resolution_clock</a></p>
+<ul>
+<li>vs2013 win10 使用steady_clock</li>
+</ul>
+<p>参考：Boost 时间管理库</p>
+</div>
+<nav class="post-nav"><a class="post-nav-link" href="/articles/vcm-ce-shi/"><span>← 上一篇</span><strong>VCM 音圈电机测试规范</strong></a><a class="post-nav-link next" href="/articles/langchain-bi-ji/"><span>下一篇 →</span><strong>LangChain 笔记</strong></a></nav>
+</article>
+</main>
+<footer>WORKLOG / NOTES / TECH</footer>
+</div>
+
+</body>
+</html>

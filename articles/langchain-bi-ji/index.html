@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>LangChain 笔记 · 橙心</title>
+<meta name="description" content="- softmax:向量转化为词汇 , 但是实际上是给出一个token以及对应token的概率分布 - 采用随机采样的方式,为了具备多样性,也就是temperature参数">
+<meta name="author" content="橙心">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/articles.css">
+<link rel="canonical" href="https://orangeheart.top/articles/langchain-bi-ji/">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="橙心">
+<meta property="og:title" content="LangChain 笔记">
+<meta property="og:description" content="- softmax:向量转化为词汇 , 但是实际上是给出一个token以及对应token的概率分布 - 采用随机采样的方式,为了具备多样性,也就是temperature参数">
+<meta property="og:url" content="https://orangeheart.top/articles/langchain-bi-ji/">
+<meta name="twitter:card" content="summary">
+<meta name="generator" content="nano-blog · markdown-it-py + Pygments">
+</head>
+<body>
+<div class="site">
+<header class="compact"><nav aria-label="主导航"><a href="/">首页</a><a href="/articles/" aria-current="page">文章</a><a href="/tags/">标签</a><a href="/about/">关于我</a></nav></header>
+<main>
+<article>
+<header class="article-header">
+<h1>LangChain 笔记</h1>
+<div class="article-meta">
+<time datetime="2026-03-26">2026-03-26</time>
+<span class="dot">·</span>
+<span>613 字</span>
+<a class="tag" href="/tags/AI/" rel="tag">AI</a><a class="tag" href="/tags/LangChain/" rel="tag">LangChain</a><a class="tag" href="/tags/LLM/" rel="tag">LLM</a><a class="tag" href="/tags/Transformer/" rel="tag">Transformer</a>
+</div>
+</header>
+<div class="prose">
+<h1>user</h1>
+<p><a href="https://www.bilibili.com/video/BV178w1z7EHQ?p=4">LangChain+LangGraph开发实战全套视频课程</a></p>
+<h1>大语言模型</h1>
+<h2>Transformer自注意力机制</h2>
+<pre><code>实质上就是向量的加减法
+</code></pre>
+<p>![[Pasted image 20260326150023.png]]</p>
+<h2>Transformer流程</h2>
+<ul>
+<li>
+<p>词向量化</p>
+</li>
+<li>
+<p>attention</p>
+</li>
+<li>
+<p>MLP:多层感知机,基于分析进一步调整向量值</p>
+</li>
+<li>
+<p>attention和MLP  多次重复</p>
+</li>
+<li>
+<p>softmax:向量转化为词汇  , 但是实际上是给出一个token以及对应token的概率分布</p>
+<ul>
+<li>采用随机采样的方式,为了具备多样性,也就是temperature参数</li>
+</ul>
+<p>早期的 Transformer模型确实是纯粹的概率分布的大预言模型,模型参数量的升级以及训练数据量的升级</p>
+</li>
+<li>
+<p>Transformer本来是作为翻译用的，但当模型规模和训练数据量增突破某个临界点时，模型像是突然拥有了智能，不仅可以理解人类语言，还能推理、分析。这种现象被称为“涌现”（EmergentAbilities）。这种超大规模的语言模型则被称为大语言模型</p>
+</li>
+</ul>
+<h3>记忆丢失问题</h3>
+<ul>
+<li>因为是计算出来的,所以上下文长度如果太大的话,那么计算量就会很大,就算不过来了,所以模型就都会存在上下文的限制</li>
+<li></li>
+<li>Generative  Pre-trained  Transformer</li>
+<li>大语言模型（Large Language Model，LLM）</li>
+</ul>
+</div>
+<nav class="post-nav"><a class="post-nav-link" href="/articles/shi-jian-lei-fang-fa/"><span>← 上一篇</span><strong>C++ 时间类方法</strong></a><a class="post-nav-link next" href="/articles/cluade-code-ji-qiao/"><span>下一篇 →</span><strong>Claude Code 隐藏命令与效率技巧</strong></a></nav>
+</article>
+</main>
+<footer>WORKLOG / NOTES / TECH</footer>
+</div>
+
+</body>
+</html>

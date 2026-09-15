@@ -1,0 +1,176 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Claude Code 隐藏命令与效率技巧 · 橙心</title>
+<meta name="description" content="1. 紧跟更新：Claude Code 更新极快，官方 CHANGELOG 和开发团队的 Twitter 是获取新功能的第一手渠道。 🔗 官方更新日志(https://github…">
+<meta name="author" content="橙心">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/articles.css">
+<link rel="canonical" href="https://orangeheart.top/articles/cluade-code-ji-qiao/">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="橙心">
+<meta property="og:title" content="Claude Code 隐藏命令与效率技巧">
+<meta property="og:description" content="1. 紧跟更新：Claude Code 更新极快，官方 CHANGELOG 和开发团队的 Twitter 是获取新功能的第一手渠道。 🔗 官方更新日志(https://github…">
+<meta property="og:url" content="https://orangeheart.top/articles/cluade-code-ji-qiao/">
+<meta name="twitter:card" content="summary">
+<meta name="generator" content="nano-blog · markdown-it-py + Pygments">
+</head>
+<body>
+<div class="site">
+<header class="compact"><nav aria-label="主导航"><a href="/">首页</a><a href="/articles/" aria-current="page">文章</a><a href="/tags/">标签</a><a href="/about/">关于我</a></nav></header>
+<main>
+<article>
+<header class="article-header">
+<h1>Claude Code 隐藏命令与效率技巧</h1>
+<div class="article-meta">
+<time datetime="2026-04-14">2026-04-14</time>
+<span class="dot">·</span>
+<span>2,176 字</span>
+<a class="tag" href="/tags/%E5%B7%A5%E5%85%B7/" rel="tag">工具</a><a class="tag" href="/tags/Claude%20Code/" rel="tag">Claude Code</a><a class="tag" href="/tags/CLI/" rel="tag">CLI</a><a class="tag" href="/tags/%E6%95%88%E7%8E%87%E6%8A%80%E5%B7%A7/" rel="tag">效率技巧</a>
+</div>
+</header>
+<div class="prose">
+<h1>Claude Code 隐藏命令与效率技巧（Obsidian 笔记）</h1>
+<blockquote>
+<p>来源：基于一篇实战经验整理，涵盖 <code>/btw</code>、<code>/rewind</code>、<code>/insights</code>、<code>/model opusplan</code>、<code>/simplify</code>、<code>/branch</code>、<code>/loop</code>、<code>/remote-control</code>、<code>/export</code> 及常用快捷键。</p>
+</blockquote>
+<h2>🚀 工作流与高级辅助</h2>
+<h3><code>/btw</code> — 临时插话，不污染上下文</h3>
+<ul>
+<li><strong>用法</strong>：在 Claude 执行长任务时，输入 <code>/btw</code> 然后提问。</li>
+<li><strong>效果</strong>：回答不会中断原任务，也不加入对话历史，几乎不消耗额外 token。</li>
+<li><strong>适用场景</strong>：突然想问“测试文件在哪个目录？”这类无关主任务的问题。</li>
+</ul>
+<h3><code>/rewind</code>（或双击 <code>Esc</code>）— 智能回退</h3>
+<ul>
+<li><strong>用法</strong>：输入 <code>/rewind</code> 或按两下 <code>Esc</code>，弹出菜单选择回退范围。</li>
+<li><strong>可选操作</strong>：
+<ul>
+<li>回退代码和对话</li>
+<li>回退对话但保留代码</li>
+<li>回退代码但保留对话</li>
+<li>从该点开始压缩对话（释放上下文窗口）</li>
+</ul>
+</li>
+<li><strong>适用场景</strong>：实验不同方案，失败后保留对话记忆，直接换方向。</li>
+</ul>
+<h2>📊 分析与效率提升</h2>
+<h3><code>/insights</code> — 使用习惯分析报告</h3>
+<ul>
+<li><strong>用法</strong>：输入 <code>/insights</code>，自动生成一份本地 HTML 报告。</li>
+<li><strong>内容</strong>：分析过去一个月你最常用的命令、重复操作模式、翻车现场，并推荐自定义命令和 Skills。</li>
+<li><strong>建议</strong>：每月运行一次，重新认识自己的使用习惯。</li>
+</ul>
+<h2>🧠 模型与代码质量</h2>
+<h3><code>/model opusplan</code> — 混合模型规划执行</h3>
+<ul>
+<li><strong>用法</strong>：直接输入 <code>/model opusplan</code> 启用。</li>
+<li><strong>原理</strong>：复杂推理时自动用 <strong>Claude Opus 4.6</strong>（规划），执行时切换到 <strong>Claude Sonnet 4.6</strong>。</li>
+<li><strong>价值</strong>：对 Pro 订阅用户尤其友好，节省 Opus 额度，同时保证规划质量。</li>
+</ul>
+<h3><code>/simplify</code> — 三合一代码审查</h3>
+<ul>
+<li><strong>用法</strong>：输入 <code>/simplify</code>。</li>
+<li><strong>机制</strong>：同时启动三个 Agent，分别从 <strong>代码复用</strong>、<strong>代码质量</strong>、<strong>运行效率</strong> 三个角度审查你的改动。</li>
+<li><strong>习惯建议</strong>：长对话或完成大功能后顺手运行一次，清理冗余 import、重复逻辑等。</li>
+</ul>
+<h2>🔄 会话控制与分支</h2>
+<h3><code>/branch</code>（原 <code>/fork</code>）— 分叉对话</h3>
+<ul>
+<li><strong>用法</strong>：输入 <code>/branch</code>，创建当前对话的分支（新会话），原会话不受影响。</li>
+<li><strong>与 <code>/rewind</code> 区别</strong>：<code>/rewind</code> 是回退（后悔药），<code>/branch</code> 是分叉（平行宇宙）。</li>
+<li><strong>适用场景</strong>：想同时尝试两种实现方式，保留原进度。</li>
+</ul>
+<h3><code>/compact</code> — 手动压缩上下文</h3>
+<ul>
+<li><strong>用法</strong>：输入 <code>/compact</code>。</li>
+<li><strong>作用</strong>：手动压缩对话历史，释放上下文窗口空间，避免因过长上下文导致回复质量下降。</li>
+</ul>
+<h2>⏱️ 自动化与远程控制</h2>
+<h3><code>/loop</code> — 定时重复任务</h3>
+<ul>
+<li><strong>用法</strong>：<code>/loop &lt;时间间隔&gt; &lt;任务描述&gt;</code>，例如 <code>/loop 5m 检查部署状态</code>。</li>
+<li><strong>默认</strong>：间隔 10 分钟。</li>
+<li><strong>生命周期</strong>：创建 3 天后自动过期并自我删除（最后一次触发后）。若需永久循环，建议使用桌面版。</li>
+</ul>
+<h3><code>/remote-control</code>（或 <code>/rc</code>）— 手机遥控终端</h3>
+<ul>
+<li><strong>用法</strong>：输入 <code>/rc</code> 或 <code>/remote-control</code>，生成一个 URL。</li>
+<li><strong>效果</strong>：手机浏览器打开该 URL，即可远程操作本地 Claude Code 会话。代码和文件始终留在本地，仅传输指令。</li>
+<li><strong>特点</strong>：终端与手机实时同步，可交替使用。</li>
+</ul>
+<h2>💾 导出与历史管理</h2>
+<h3><code>/export</code> — 导出对话为 Markdown</h3>
+<ul>
+<li><strong>用法</strong>：输入 <code>/export</code>，当前整段对话导出为 <code>.md</code> 文件。</li>
+<li><strong>用途</strong>：保存架构讨论过程、作为后续上下文、或跨 AI 工具协作（例如给 Codex 看）。</li>
+</ul>
+<h3><code>/clear</code> — 重置对话上下文</h3>
+<ul>
+<li><strong>用法</strong>：输入 <code>/clear</code>。</li>
+<li><strong>作用</strong>：清空当前会话历史，开启全新上下文。</li>
+</ul>
+<h2>⌨️ 快捷键（终端内）</h2>
+<table>
+<thead>
+<tr>
+<th>快捷键（Mac 注意）</th>
+<th>功能</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Ctrl+V</code>（不是 Cmd+V）</td>
+<td>直接粘贴截图（Claude 可看图）</td>
+</tr>
+<tr>
+<td><code>Ctrl+J</code> 或 <code>Option+Enter</code></td>
+<td>换行（编写多行 Prompt）</td>
+</tr>
+<tr>
+<td><code>Ctrl+R</code></td>
+<td>搜索输入历史（快速复用之前的 Prompt）</td>
+</tr>
+<tr>
+<td><code>Ctrl+U</code></td>
+<td>删除整行输入</td>
+</tr>
+<tr>
+<td><code>Shift+Tab</code></td>
+<td>切换 Plan/Auto/Normal 模式</td>
+</tr>
+</tbody>
+</table>
+<h2>💡 实用建议</h2>
+<ol>
+<li>
+<p><strong>紧跟更新</strong>：Claude Code 更新极快，官方 CHANGELOG 和开发团队的 Twitter 是获取新功能的第一手渠道。<br>
+🔗 <a href="https://github.com/anthropics/claude-code/blob/main/CHANGELOG.md">官方更新日志</a></p>
+</li>
+<li>
+<p><strong>形成个人习惯</strong>：</p>
+<ul>
+<li>长任务中用 <code>/btw</code> 插问临时问题。</li>
+<li>完成大功能后运行 <code>/simplify</code> 审查代码。</li>
+<li>需要实验时用 <code>/branch</code> 分叉会话。</li>
+<li>每月跑一次 <code>/insights</code> 优化工作流。</li>
+</ul>
+</li>
+<li>
+<p><strong>安全提示</strong>：<code>/remote-control</code> 不暴露本地文件，放心使用。</p>
+</li>
+</ol>
+<hr>
+<p><em>笔记整理时间：2026-04-14</em><br>
+<em>整理自实战经验与官方更新</em></p>
+</div>
+<nav class="post-nav"><a class="post-nav-link" href="/articles/langchain-bi-ji/"><span>← 上一篇</span><strong>LangChain 笔记</strong></a><a class="post-nav-link next" href="/articles/ai-luo-di-gang-xue-xi-lu-xian/"><span>下一篇 →</span><strong>LangChain 学习</strong></a></nav>
+</article>
+</main>
+<footer>WORKLOG / NOTES / TECH</footer>
+</div>
+
+</body>
+</html>

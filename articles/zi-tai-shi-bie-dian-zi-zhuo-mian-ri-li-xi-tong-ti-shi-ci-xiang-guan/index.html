@@ -1,0 +1,234 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>嵌入式项目开发指南 - 姿态识别电子桌面日历系统 · 橙心</title>
+<meta name="description" content="一、项目目标（写清楚给 Claude Code）">
+<meta name="author" content="橙心">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/articles.css">
+<link rel="canonical" href="https://orangeheart.top/articles/zi-tai-shi-bie-dian-zi-zhuo-mian-ri-li-xi-tong-ti-shi-ci-xiang-guan/">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="橙心">
+<meta property="og:title" content="嵌入式项目开发指南 - 姿态识别电子桌面日历系统">
+<meta property="og:description" content="一、项目目标（写清楚给 Claude Code）">
+<meta property="og:url" content="https://orangeheart.top/articles/zi-tai-shi-bie-dian-zi-zhuo-mian-ri-li-xi-tong-ti-shi-ci-xiang-guan/">
+<meta name="twitter:card" content="summary">
+<meta name="generator" content="nano-blog · markdown-it-py + Pygments">
+</head>
+<body>
+<div class="site">
+<header class="compact"><nav aria-label="主导航"><a href="/">首页</a><a href="/articles/" aria-current="page">文章</a><a href="/tags/">标签</a><a href="/about/">关于我</a></nav></header>
+<main>
+<article>
+<header class="article-header">
+<h1>嵌入式项目开发指南 - 姿态识别电子桌面日历系统</h1>
+<div class="article-meta">
+<time datetime="2026-04-20">2026-04-20</time>
+<span class="dot">·</span>
+<span>1,929 字</span>
+<a class="tag" href="/tags/%E5%B5%8C%E5%85%A5%E5%BC%8F/" rel="tag">嵌入式</a><a class="tag" href="/tags/%E9%A1%B9%E7%9B%AE%E5%BC%80%E5%8F%91/" rel="tag">项目开发</a><a class="tag" href="/tags/STM32/" rel="tag">STM32</a><a class="tag" href="/tags/MPU6050/" rel="tag">MPU6050</a><a class="tag" href="/tags/TFT/" rel="tag">TFT</a><a class="tag" href="/tags/DHT11/" rel="tag">DHT11</a>
+</div>
+</header>
+<div class="prose">
+<p>一、项目目标（写清楚给 Claude Code）</p>
+<p>你可以直接用这段当项目描述：</p>
+<p>使用 STM32F103C8T6 + GY-87 + 1.8寸 TFT（128x160 SPI）+ DHT11，实现一个姿态识别电子桌面日历系统。<br>
+系统通过 IMU 检测翻转/倾斜动作，切换不同信息页面（日期 / 时间 / 温湿度 / 状态页），并在 TFT 上实时显示。系统支持低功耗待机与外部中断唤醒。</p>
+<p>⸻</p>
+<p>二、系统模块拆分（Claude Code 工作单元）</p>
+<p>这个项目建议拆成 5 个模块，让 AI 分别生成：</p>
+<p>Module 1：硬件抽象层（HAL封装）</p>
+<p>内容：<br>
+•	GPIO初始化<br>
+•	SPI（TFT）<br>
+•	I2C（GY-87）<br>
+•	ADC（如果扩展）<br>
+•	Delay / SysTick</p>
+<p>输出：</p>
+<p>bsp_gpio.c<br>
+bsp_spi.c<br>
+bsp_i2c.c<br>
+bsp_delay.c</p>
+<p>⸻</p>
+<p>Module 2：GY-87 姿态识别</p>
+<p>功能：<br>
+•	MPU6050读取加速度 + 陀螺仪<br>
+•	简单姿态判断：</p>
+<p>平放<br>
+倒置<br>
+左倾<br>
+右倾<br>
+翻转</p>
+<p>核心算法（建议简单版）：<br>
+•	用加速度 z 轴判断上下<br>
+•	用 x/y 判断倾斜</p>
+<p>输出：</p>
+<p>imu_mpu6050.c<br>
+imu_posture.c</p>
+<p>⸻</p>
+<p>Module 3：TFT 1.8 显示驱动</p>
+<p>功能：<br>
+•	SPI初始化<br>
+•	LCD初始化（ST7735驱动）<br>
+•	基础绘图：</p>
+<p>draw_pixel<br>
+draw_line<br>
+draw_rect<br>
+draw_text<br>
+clear_screen</p>
+<p>输出：</p>
+<p>tft_st7735.c<br>
+tft_graphics.c<br>
+font.c</p>
+<p>⸻</p>
+<p>Module 4：DHT11 温湿度模块</p>
+<p>功能：<br>
+•	单总线协议<br>
+•	读取温度湿度<br>
+•	返回结构体</p>
+<p>输出：</p>
+<p>dht11.c</p>
+<p>⸻</p>
+<p>Module 5：应用逻辑（核心）</p>
+<p>这是最重要部分：</p>
+<p>状态机设计：</p>
+<p>enum AppState {<br>
+PAGE_TIME,<br>
+PAGE_DATE,<br>
+PAGE_WEATHER_DUMMY,<br>
+PAGE_SENSOR<br>
+};</p>
+<p>⸻</p>
+<p>触发逻辑：<br>
+•	GY-87检测姿态变化 → 切页<br>
+•	每3秒刷新数据<br>
+•	DHT11每10秒更新</p>
+<p>⸻</p>
+<p>页面设计：</p>
+<p>PAGE_DATE<br>
+•	日期<br>
+•	星期<br>
+PAGE_TIME<br>
+•	时:分:秒</p>
+<p>PAGE_SENSOR<br>
+•	温度<br>
+•	湿度</p>
+<p>PAGE_WEATHER（占位）<br>
+•	以后扩展</p>
+<p>输出：</p>
+<p>app_main.c<br>
+ui_pages.c<br>
+state_machine.c</p>
+<p>⸻</p>
+<p>三、系统运行流程（Claude Code 必须理解）</p>
+<p>上电<br>
+↓<br>
+初始化 STM32<br>
+↓<br>
+初始化 TFT / IMU / DHT11<br>
+↓<br>
+进入主循环</p>
+<p>while(1)<br>
+{<br>
+读取IMU<br>
+如果姿态变化 → 切换页面</p>
+<pre><code>每1s：
+    更新时间
+
+每3s：
+    刷新屏幕
+
+每10s：
+    读取温湿度
+
+进入低功耗等待（可选）
+</code></pre>
+<p>}</p>
+<p>⸻</p>
+<p>⚙️ 四、建议的开发顺序（非常重要）</p>
+<p>不要一次性写完</p>
+<p>⸻</p>
+<p>Step 1（先跑屏幕）</p>
+<p>Claude Code任务：</p>
+<p>“帮我写 STM32F103 + ST7735 TFT 初始化 + 显示 Hello World”</p>
+<p>成功标志：屏幕亮</p>
+<p>⸻</p>
+<p>Step 2（加 IMU）</p>
+<p>任务：</p>
+<p>“读取 MPU6050 加速度并通过串口输出”</p>
+<p>成功标志：能看到 x/y/z</p>
+<p>⸻</p>
+<p>Step 3（姿态识别）</p>
+<p>任务：</p>
+<p>“根据 MPU6050 加速度判断设备是否翻转”</p>
+<p>输出：</p>
+<p>UP / DOWN / LEFT / RIGHT</p>
+<p>⸻</p>
+<p>Step 4（UI状态机）</p>
+<p>任务：</p>
+<p>“实现 TFT 页面切换系统（3个页面）”</p>
+<p>⸻</p>
+<p>Step 5（DHT11）</p>
+<p>任务：</p>
+<p>“读取温湿度并显示在屏幕”</p>
+<p>⸻</p>
+<p>Step 6（整合）</p>
+<p>任务：</p>
+<p>“整合 IMU + UI + DHT11 + 状态机”</p>
+<p>⸻</p>
+<p>五、给 Claude Code 的“总提示词”（可以直接复制）</p>
+<p>你可以直接丢这个：</p>
+<p>⸻</p>
+<p>Claude Code Prompt：</p>
+<p>请基于 STM32F103C8T6（标准外设库或HAL均可）开发一个嵌入式应用：</p>
+<p>硬件包括：<br>
+•	GY-87（MPU6050）<br>
+•	ST7735 1.8寸 SPI TFT（128x160）<br>
+•	DHT11 温湿度模块</p>
+<p>实现功能：<br>
+1.	通过 MPU6050 判断设备姿态（正常/翻转/左右倾斜）<br>
+2.	根据姿态切换显示页面<br>
+3.	TFT显示三种页面：时间/日期/温湿度<br>
+4.	DHT11周期性采集温湿度<br>
+5.	使用状态机管理UI</p>
+<p>请分模块生成代码（driver + middleware + app），并保证可移植性。</p>
+<p>⸻</p>
+<p>🧩 六、这个项目的关键设计点（避免翻车）</p>
+<p>⚠️ 1. IMU不要用复杂滤波<br>
+•	先用原始加速度<br>
+•	不要一开始上卡尔曼</p>
+<p>⸻</p>
+<p>⚠️ 2. TFT刷新别太频繁<br>
+•	1~3秒刷新一次足够</p>
+<p>⸻</p>
+<p>⚠️ 3. 状态机必须清晰</p>
+<p>否则 Claude 会写成一坨 loop</p>
+<p>⸻</p>
+<p>⚠️ 4. DHT11要独立任务<br>
+•	否则会卡主主循环</p>
+<p>⸻</p>
+<p>🚀 七、最终效果（你会得到什么）</p>
+<p>完成后你这个系统会是：</p>
+<p>👉 放桌上：<br>
+•	翻转 → 自动切页面<br>
+•	显示时间/温湿度<br>
+•	有“电子设备交互感”</p>
+<p>⸻</p>
+<p>如果你下一步要继续，我可以帮你：<br>
+•	✍️ 直接帮你写“STM32工程目录结构（可导入CubeIDE）”<br>
+•	⚡ MPU6050姿态判断代码（可以直接用）<br>
+•	📺 ST7735最小驱动（让屏先亮）<br>
+•	🧠 Claude Code拆任务模板（更细粒度）</p>
+<p>这个项目其实已经进入：<br>
+👉 “可以开始写第一行驱动代码”的阶段了</p>
+</div>
+<nav class="post-nav"><a class="post-nav-link" href="/articles/qian-ru-shi-yi-you-ying-jian/"><span>← 上一篇</span><strong>嵌入式硬件清单</strong></a><a class="post-nav-link next" href="/articles/pi-system-prompt/"><span>下一篇 →</span><strong>Pi 编码智能体：系统提示词全文（中文）</strong></a></nav>
+</article>
+</main>
+<footer>WORKLOG / NOTES / TECH</footer>
+</div>
+
+</body>
+</html>

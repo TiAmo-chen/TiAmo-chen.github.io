@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0">
+  <channel>
+    <title>橙心</title>
+    <link>https://orangeheart.top/</link>
+    <description>嵌入式 / 图像算法 / AI 的工作与学习笔记</description>
+    <language>zh-cn</language>
+    <lastBuildDate>Tue, 15 Sep 2026 06:21:27 +0800</lastBuildDate>
+    <item>
+      <title>工作记录 2026-09-14</title>
+      <link>https://orangeheart.top/articles/2026-09-14-daily/</link>
+      <guid isPermaLink="true">https://orangeheart.top/articles/2026-09-14-daily/</guid>
+      <pubDate>Mon, 14 Sep 2026 08:00:00 +0800</pubDate>
+      <description>嵌入式 / 图像算法 / AI 的工作与学习笔记</description>
+    </item>
+    <item>
+      <title>S1100+ 课程分享：真正的计算机素养是什么</title>
+      <link>https://orangeheart.top/articles/computer-literacy/</link>
+      <guid isPermaLink="true">https://orangeheart.top/articles/computer-literacy/</guid>
+      <pubDate>Thu, 10 Sep 2026 08:00:00 +0800</pubDate>
+      <description>以下是图片中的文字内容提取，已尽量保留原有的排版格式：</description>
+    </item>
+    <item>
+      <title>Pi 编码智能体：系统提示词全文（中文）</title>
+      <link>https://orangeheart.top/articles/pi-system-prompt/</link>
+      <guid isPermaLink="true">https://orangeheart.top/articles/pi-system-prompt/</guid>
+      <pubDate>Wed, 02 Sep 2026 08:00:00 +0800</pubDate>
+      <description>file name: You are an expert coding assistant operating.txt file content begin 你是一名在 Pi 编码…</description>
+    </item>
+    <item>
+      <title>嵌入式项目开发指南 - 姿态识别电子桌面日历系统</title>
+      <link>https://orangeheart.top/articles/zi-tai-shi-bie-dian-zi-zhuo-mian-ri-li-xi-tong-ti-shi-ci-xiang-guan/</link>
+      <guid isPermaLink="true">https://orangeheart.top/articles/zi-tai-shi-bie-dian-zi-zhuo-mian-ri-li-xi-tong-ti-shi-ci-xiang-guan/</guid>
+      <pubDate>Mon, 20 Apr 2026 08:00:00 +0800</pubDate>
+      <description>一、项目目标（写清楚给 Claude Code）</description>
+    </item>
+    <item>
+      <title>嵌入式硬件清单</title>
+      <link>https://orangeheart.top/articles/qian-ru-shi-yi-you-ying-jian/</link>
+      <guid isPermaLink="true">https://orangeheart.top/articles/qian-ru-shi-yi-you-ying-jian/</guid>
+      <pubDate>Mon, 20 Apr 2026 08:00:00 +0800</pubDate>
+      <description>1. STM32F103C8T6 2. HC SR04超声波 3. CH340G usb转ttl 4. LCD1602A 5. DHT11 6. SG90舵机 7. ST-link…</description>
+    </item>
+    <item>
+      <title>Python 笔记</title>
+      <link>https://orangeheart.top/articles/python-bi-ji/</link>
+      <guid isPermaLink="true">https://orangeheart.top/articles/python-bi-ji/</guid>
+      <pubDate>Mon, 20 Apr 2026 08:00:00 +0800</pubDate>
+      <description>- type()不会认为子类是一种父类类型。 type(A()) == A - isinstance()会认为子类是一种父类类型。 isinstance(A(), A)</description>
+    </item>
+    <item>
+      <title>LangChain 学习</title>
+      <link>https://orangeheart.top/articles/ai-luo-di-gang-xue-xi-lu-xian/</link>
+      <guid isPermaLink="true">https://orangeheart.top/articles/ai-luo-di-gang-xue-xi-lu-xian/</guid>
+      <pubDate>Mon, 20 Apr 2026 08:00:00 +0800</pubDate>
+      <description>推荐资源： - 《Python 编程：从入门到实践》 - B 站：小甲鱼 Python 教程</description>
+    </item>
+    <item>
+      <title>Claude Code 隐藏命令与效率技巧</title>
+      <link>https://orangeheart.top/articles/cluade-code-ji-qiao/</link>
+      <guid isPermaLink="true">https://orangeheart.top/articles/cluade-code-ji-qiao/</guid>
+      <pubDate>Tue, 14 Apr 2026 08:00:00 +0800</pubDate>
+      <description>1. 紧跟更新：Claude Code 更新极快，官方 CHANGELOG 和开发团队的 Twitter 是获取新功能的第一手渠道。 🔗 官方更新日志(https://github…</description>
+    </item>
+    <item>
+      <title>LangChain 笔记</title>
+      <link>https://orangeheart.top/articles/langchain-bi-ji/</link>
+      <guid isPermaLink="true">https://orangeheart.top/articles/langchain-bi-ji/</guid>
+      <pubDate>Thu, 26 Mar 2026 08:00:00 +0800</pubDate>
+      <description>- softmax:向量转化为词汇 , 但是实际上是给出一个token以及对应token的概率分布 - 采用随机采样的方式,为了具备多样性,也就是temperature参数</description>
+    </item>
+    <item>
+      <title>C++ 时间类方法</title>
+      <link>https://orangeheart.top/articles/shi-jian-lei-fang-fa/</link>
+      <guid isPermaLink="true">https://orangeheart.top/articles/shi-jian-lei-fang-fa/</guid>
+      <pubDate>Fri, 30 Jan 2026 08:00:00 +0800</pubDate>
+      <description>cpp struct tm tm; timet t = time(NULL); localtimes(&amp;tm, &amp;t); char buf128; strftime(buf, si…</description>
+    </item>
+    <item>
+      <title>VCM 音圈电机测试规范</title>
+      <link>https://orangeheart.top/articles/vcm-ce-shi/</link>
+      <guid isPermaLink="true">https://orangeheart.top/articles/vcm-ce-shi/</guid>
+      <pubDate>Wed, 02 Jul 2025 08:00:00 +0800</pubDate>
+      <description>实际距离dis 200~5000mm</description>
+    </item>
+  </channel>
+</rss>
