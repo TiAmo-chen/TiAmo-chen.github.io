@@ -44,8 +44,11 @@ jobs:
 
       - name: 同步产物到仓库根目录
         run: |
+          # 先清空旧产物（保留 .git / .github / src）
           find . -maxdepth 1 -mindepth 1 ! -name '.git' ! -name '.github' ! -name 'src' -exec rm -rf {} +
+          # 再拷贝新产物，最后务必删掉 src —— 否则会被当成 submodule 引用提交
           cp -a src/public/. .
+          rm -rf src
 
       - name: 提交并推送
         run: |
