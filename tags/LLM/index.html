@@ -20,7 +20,7 @@
 </head>
 <body>
 <div class="site">
-<header class="compact"><nav aria-label="主导航"><a href="/">首页</a><a href="/articles/">文章</a><a href="/tags/" aria-current="page">标签</a><a href="/about/">关于我</a></nav><button class="theme-toggle" type="button" aria-label="切换日间/夜间模式" title="切换日间/夜间模式"><span class="tt-sun" aria-hidden="true">☀</span><span class="tt-moon" aria-hidden="true">☾</span></button></header>
+<header class="compact"><nav aria-label="主导航"><a href="/">首页</a><a href="/articles/">文章</a><a href="/tags/" aria-current="page">标签</a><a href="/about/">关于我</a></nav><button class="icon-btn theme-toggle" type="button" aria-label="切换日间/夜间模式" title="切换日间/夜间模式"><span class="tt-sun"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg></span><span class="tt-moon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></span></button></header>
 <main>
 <h1>LLM</h1>
 <p class="muted">共 2 篇文章</p>
@@ -29,6 +29,7 @@
 <footer>WORKLOG / NOTES / TECH</footer>
 </div>
 
-<script>(function(){var b=document.querySelector('.theme-toggle');if(!b)return;b.addEventListener('click',function(){var d=document.documentElement,c=d.dataset.theme;if(c!=='dark'&&c!=='light'){c=window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light'}var n=c==='dark'?'light':'dark';d.dataset.theme=n;try{localStorage.setItem('nano-blog-theme',n)}catch(e){}b.setAttribute('title',n==='dark'?'切换到日间模式':'切换到夜间模式')})})();</script>
+<nav class="scroll-nav" aria-label="页面滚动"><button class="icon-btn" type="button" data-scroll="top" aria-label="回到最上面" title="回到最上面"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 19V5"/><path d="M5 12l7-7 7 7"/></svg></button><button class="icon-btn" type="button" data-scroll="bottom" aria-label="跳到最下面" title="跳到最下面"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14"/><path d="M19 12l-7 7-7-7"/></svg></button></nav>
+<script>(function(){var K='nano-blog-theme',b=document.querySelector('.theme-toggle');function apply(n){document.documentElement.dataset.theme=n;try{localStorage.setItem(K,n)}catch(e){}b.setAttribute('title',n==='dark'?'切换到日间模式':'切换到夜间模式')}if(b){b.addEventListener('click',function(){var c=document.documentElement.dataset.theme;if(c!=='dark'&&c!=='light'){c=window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light'}apply(c==='dark'?'light':'dark')})}document.querySelectorAll('[data-scroll]').forEach(function(el){el.addEventListener('click',function(){window.scrollTo({top:el.getAttribute('data-scroll')==='top'?0:document.documentElement.scrollHeight,behavior:'smooth'})})});})();</script>
 </body>
 </html>

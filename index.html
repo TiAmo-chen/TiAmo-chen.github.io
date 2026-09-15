@@ -21,25 +21,27 @@
 <body>
 <main class="site">
 <aside class="article-nav" aria-label="网站导航">
-<div class="sidebar-top"><button class="theme-toggle" type="button" aria-label="切换日间/夜间模式" title="切换日间/夜间模式"><span class="tt-sun" aria-hidden="true">☀</span><span class="tt-moon" aria-hidden="true">☾</span></button></div>
 <nav aria-label="主导航"><a href="/">首页</a><a href="/articles/">文章</a><a href="/tags/">标签</a><a href="/about/">关于我</a></nav>
 <section class="recent-articles" aria-labelledby="recent-title">
 <h2 id="recent-title">最近更新</h2>
-<a class="recent-article-link" href="/articles/2026-09-14-daily/">工作记录 2026-09-14</a><a class="recent-article-link" href="/articles/computer-literacy/">S1100+ 课程分享：真正的计算机素养是什么</a><a class="recent-article-link" href="/articles/pi-system-prompt/">Pi 编码智能体：系统提示词全文（中文）</a><a class="recent-article-link" href="/articles/zi-tai-shi-bie-dian-zi-zhuo-mian-ri-li-xi-tong-ti-shi-ci-xiang-guan/">嵌入式项目开发指南 - 姿态识别电子桌面日历系统</a><a class="recent-article-link" href="/articles/qian-ru-shi-yi-you-ying-jian/">嵌入式硬件清单</a><a class="recent-article-link" href="/articles/python-bi-ji/">Python 笔记</a><a class="recent-article-link" href="/articles/ai-luo-di-gang-xue-xi-lu-xian/">LangChain 学习</a><a class="recent-article-link" href="/articles/cluade-code-ji-qiao/">Claude Code 隐藏命令与效率技巧</a>
-<a class="more" href="/articles/">全部文章 →</a>
+<a class="recent-article-link" href="/articles/2026-09-14-daily/">工作记录 2026-09-14</a><a class="recent-article-link" href="/articles/computer-literacy/">S1100+ 课程分享：真正的计算机素养是什么</a><a class="recent-article-link" href="/articles/pi-system-prompt/">Pi 编码智能体：系统提示词全文（中文）</a><a class="recent-article-link" href="/articles/zi-tai-shi-bie-dian-zi-zhuo-mian-ri-li-xi-tong-ti-shi-ci-xiang-guan/">嵌入式项目开发指南 - 姿态识别电子桌面日历系统</a><a class="recent-article-link" href="/articles/qian-ru-shi-yi-you-ying-jian/">嵌入式硬件清单</a><a class="recent-article-link" href="/articles/python-bi-ji/">Python 笔记</a><a class="recent-article-link" href="/articles/ai-luo-di-gang-xue-xi-lu-xian/">LangChain 学习</a><a class="recent-article-link" href="/articles/cluade-code-ji-qiao/">Claude Code 隐藏命令与效率技巧</a><a class="recent-article-link" href="/articles/langchain-bi-ji/">LangChain 笔记</a><a class="recent-article-link" href="/articles/shi-jian-lei-fang-fa/">C++ 时间类方法</a>
 </section>
 </aside>
-<div class="stage">
 <aside class="activity" aria-labelledby="activity-title"><h2 id="activity-title">最近在做</h2><ol class="timeline"><li class="timeline-item"><span class="timeline-status">正在进行</span><h3>把 Obsidian 日记搬进自建博客</h3><p>Markdown → HTML · 零 JS 运行时</p><a href="/articles/">查看文章 <span aria-hidden="true">↗</span></a></li></ol></aside>
+<div class="black-world" aria-hidden="true"></div>
+<div class="home-toggle"><button class="icon-btn theme-toggle" type="button" aria-label="切换日间/夜间模式" title="切换日间/夜间模式"><span class="tt-sun"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg></span><span class="tt-moon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></span></button></div>
 <section class="profile" aria-labelledby="profile-title">
-<figure class="hero"><img src="/hero.webp" alt="" width="760" height="819"></figure>
+<figure class="avatar"><img src="/hero.webp" alt="" width="760" height="819"></figure>
+<div class="profile-copy">
 <h1 id="profile-title">记录那些真正搞明白的事。</h1>
-<p class="tagline">WORKLOG / NOTES / TECH</p>
+<p>WORKLOG / NOTES / TECH</p>
 
-</section>
 </div>
+</section>
+<footer class="footer"><span>橙心</span><span>POWERED BY NANO-BLOG</span></footer>
 </main>
 
-<script>(function(){var b=document.querySelector('.theme-toggle');if(!b)return;b.addEventListener('click',function(){var d=document.documentElement,c=d.dataset.theme;if(c!=='dark'&&c!=='light'){c=window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light'}var n=c==='dark'?'light':'dark';d.dataset.theme=n;try{localStorage.setItem('nano-blog-theme',n)}catch(e){}b.setAttribute('title',n==='dark'?'切换到日间模式':'切换到夜间模式')})})();</script>
+
+<script>(function(){var K='nano-blog-theme',b=document.querySelector('.theme-toggle');function apply(n){document.documentElement.dataset.theme=n;try{localStorage.setItem(K,n)}catch(e){}b.setAttribute('title',n==='dark'?'切换到日间模式':'切换到夜间模式')}if(b){b.addEventListener('click',function(){var c=document.documentElement.dataset.theme;if(c!=='dark'&&c!=='light'){c=window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light'}apply(c==='dark'?'light':'dark')})}document.querySelectorAll('[data-scroll]').forEach(function(el){el.addEventListener('click',function(){window.scrollTo({top:el.getAttribute('data-scroll')==='top'?0:document.documentElement.scrollHeight,behavior:'smooth'})})});})();</script>
 </body>
 </html>
